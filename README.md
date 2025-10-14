@@ -172,7 +172,7 @@ sudo ufw delete [numeroRegla]
 
 ##### Comprobación del servidor
 
-  ![alt text](/images/8.png)
+  ![alt text](/images/8.PNG)
 
 ##### Virtual Hosts
 ##### Permisos y usuarios
@@ -219,9 +219,9 @@ sudo ufw delete [numeroRegla]
 
 ##### Comprobación del servidor
 
-![alt text](/images/10.png)
+![alt text](/images/10.PNG)
 
-![alt text](/images/9.png)
+![alt text](/images/9.PNG)
 
 #### 1.1.4 MySQL
 #### 1.1.5 XDebug
