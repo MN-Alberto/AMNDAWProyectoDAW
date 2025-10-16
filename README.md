@@ -20,7 +20,7 @@
         - [Comprobación del servidor](#comprobación-del-servidor)
         - [Virtual Hosts](#virtual-hosts)
         - [Permisos y usuarios](#permisos-y-usuarios)
-      - [1.1.3 PHP](#113-php)
+      - [1.1.3 PHP8.3-fpm](#113-php83-fpm)
         - [Instalación](#instalación-1)
         - [Verificación del servicio](#verificación-del-servicio)
         - [Comprobación del servidor](#comprobación-del-servidor-1)
@@ -35,9 +35,10 @@
         - [**Nombre y configuración de red**](#nombre-y-configuración-de-red)
         - [**Cuentas administradoras**](#cuentas-administradoras-1)
       - [1.2.2 **Navegadores**](#122-navegadores)
-      - [1.2.3 **FileZilla**](#123-filezilla)
+      - [1.2.3 **MobaXterm**](#123-mobaxterm)
       - [1.2.4 **Netbeans**](#124-netbeans)
         - [Creación de proyectos](#creación-de-proyectos)
+        - [Configuración de Git en NetBeans](#configuración-de-git-en-netbeans)
       - [1.2.5 **Visual Studio Code**](#125-visual-studio-code)
   - [2. GitHub](#2-github)
   - [3.Entorno de Explotación](#3entorno-de-explotación)
@@ -172,7 +173,7 @@ sudo ufw delete [numeroRegla]
 
 ##### Comprobación del servidor
 
-  ![alt text](/images/8.PNG)
+  ![alt text](/images/8.png)
 
 ##### Virtual Hosts
 ##### Permisos y usuarios
@@ -183,7 +184,7 @@ sudo ufw delete [numeroRegla]
 
   sudo chmod -R 775 /var/www/html
 ```
-#### 1.1.3 PHP
+#### 1.1.3 PHP8.3-fpm
 ##### Instalación
 
  ```
@@ -200,16 +201,17 @@ sudo ufw delete [numeroRegla]
   sudo a2dismod mpm_prefork php8.3
 
   sudo a2enmod mpm_event proxy_fcgi
+  ```
 
+  Configuramos el sitio activo:
+
+  ```
+  
   cd /etc/apache2/sites-enabled/
 
   sudo nano 000-default.conf
-  ```
 
-  Añadimos:
-
-  ```
-    ProxyPassMatch ^/(.*\.php)$ unix:/run/php/php8.3-fpm.sock|fcgi://127.0.0.1/var/www/html
+  ProxyPassMatch ^/(.*\.php)$ unix:/run/php/php8.3-fpm.sock|fcgi://127.0.0.1/var/www/html
   ```
 
 ##### Verificación del servicio
@@ -219,9 +221,9 @@ sudo ufw delete [numeroRegla]
 
 ##### Comprobación del servidor
 
-![alt text](/images/10.PNG)
+![alt text](/images/10.png)
 
-![alt text](/images/9.PNG)
+![alt text](/images/9.png)
 
 #### 1.1.4 MySQL
 #### 1.1.5 XDebug
@@ -235,7 +237,7 @@ sudo ufw delete [numeroRegla]
 ##### **Nombre y configuración de red**
 ##### **Cuentas administradoras**
 #### 1.2.2 **Navegadores**
-#### 1.2.3 **FileZilla**
+#### 1.2.3 **MobaXterm**
 #### 1.2.4 **Netbeans**
 
 ##### Creación de proyectos
@@ -261,6 +263,46 @@ Confirmaremos los archivos que queramos sincronizar.
 
 Y comprobaremos que cuando cambiamos algo en NetBeans se ejecutan los cambios en la web del servidor.
 ![alt text](/images/7.png)
+
+##### Configuración de Git en NetBeans
+
+En primer lugar deberemos de dirigirnos a nuestro repositorio de GitHub y copiaremos la URL del repositorio clicando en "<> Code" y en el apartado HTTPS.
+![alt text](/images/11.png)
+
+En NetBeans en el apartado "Team" deberemos de clicar en la opcion de "Git" y en la opción "Clonar..."
+![alt text](/images/12.png)
+
+Pegaremos la URL de nuestro repositorio y indicaremos el usuario y la contraseña de la cuenta de GitHub. Tmbién deberemos de indicar la carpeta de destino.
+![alt text](/images/13.png)
+
+Podremos a su vez indicar que ramas queremos de las que tiene el repositorio. (Si tubiera más aparecerían aquí).
+![alt text](/images/14.png)
+
+Indicaremos el directorio padre y el nombre de la clonacion.
+![alt text](/images/15.png)
+
+Al finalizar nos dirá si queremos crear un proyecto a partir del repositorio.
+
+![alt text](/images/16.png)
+
+Indicaremos el tipo de proyecto.
+![alt text](/images/17.png)
+
+Le pondremos un nombre y le indicaremos un directorio.
+![alt text](/images/18.png)
+
+Indicaremos la URL del servidor y su directorio de publicación.
+![alt text](/images/19.png)
+
+Confirmaremos los archivos.
+![alt text](/images/20.png)
+
+Y como podemos ver en el Repository Browser tenemos toda la información sobre la clonación.
+![alt text](/images/21.png)
+
+Al hacer clic derecho en "Source Files" de nuestro proyecto, en el apartado de "Git" podremos administrar todo, por ejemplo hacer un commit, megre etc.
+![alt text](/images/22.png)
+
 #### 1.2.5 **Visual Studio Code**
 
 ## 2. GitHub
