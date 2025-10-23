@@ -176,7 +176,7 @@ sudo ufw delete [numeroRegla]
 
 ##### Comprobación del servidor
 
-  ![alt text](images/8.png)
+  ![alt text](images/8.PNG)
 
 #### HTTP a HTTPS Server
 
@@ -216,7 +216,7 @@ sudo cp default-ssl.conf amn-used.conf
 
 Dentro de la copia cambiaremos el nombre del certificado y de la clave por los que indicamos al crearlo:
 
-![alt text](images/htps.png)
+![alt text](images/htps.PNG)
 
 Después activaremos el nuevo sitio:
 
@@ -238,18 +238,18 @@ sudo ufw allow 443
 
 Comprobamos:
 
-![alt text](images/certPrueba.png)
+![alt text](images/certPrueba.PNG)
 
 #### Redirección de HTTP a HTTPS Server
 Para redireccionar apache HTTP a HTTPS deberemos de editar el fichero "/etc/apache2/sites-available/000-default.conf" y añadiremos la linea "Redirect" con la URL a la que queremos que redireccione:
 
-![alt text](images/redir.png)
+![alt text](images/redir.PNG)
 
 Comprobamos:
-![alt text](images/redir2.png)
+![alt text](images/redir2.PNG)
 
 Cuando damos intro:
-![alt text](images/redir3.png)
+![alt text](images/redir3.PNG)
 
 
 ##### Virtual Hosts
@@ -293,9 +293,9 @@ Los ficheros de log de apache se almacenan en "/var/log/apache2".
 
 ##### Comprobación del servidor
 
-![alt text](images/10.png)
+![alt text](images/10.PNG)
 
-![alt text](images/9.png)
+![alt text](images/9.PNG)
 
 #### 1.1.4 MySQL
 #### 1.1.5 XDebug
