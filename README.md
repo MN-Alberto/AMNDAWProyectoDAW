@@ -22,6 +22,7 @@
       - [Redirección de HTTP a HTTPS Server](#redirección-de-http-a-https-server)
         - [Virtual Hosts](#virtual-hosts)
         - [Permisos y usuarios](#permisos-y-usuarios)
+        - [Permisos y usuarios](#permisos-y-usuarios-1)
       - [1.1.3 PHP8.3-fpm](#113-php83-fpm)
         - [Instalación](#instalación-1)
         - [Verificación del servicio](#verificación-del-servicio)
@@ -175,9 +176,12 @@ sudo ufw delete [numeroRegla]
 
 ##### Comprobación del servidor
 
-  ![alt text](/images/8.png)
+  ![alt text](images/8.png)
 
 #### HTTP a HTTPS Server
+
+Así funciona HTTPS:
+  ![alt text](images/imagenhttps.png)
 
 En primer lugar habilitamos el modulo "ssl"
 
@@ -212,7 +216,7 @@ sudo cp default-ssl.conf amn-used.conf
 
 Dentro de la copia cambiaremos el nombre del certificado y de la clave por los que indicamos al crearlo:
 
-![alt text](/images/htps.png)
+![alt text](images/htps.png)
 
 Después activaremos el nuevo sitio:
 
@@ -234,18 +238,18 @@ sudo ufw allow 443
 
 Comprobamos:
 
-![alt text](/images/certPrueba.png)
+![alt text](images/certPrueba.png)
 
 #### Redirección de HTTP a HTTPS Server
 Para redireccionar apache HTTP a HTTPS deberemos de editar el fichero "/etc/apache2/sites-available/000-default.conf" y añadiremos la linea "Redirect" con la URL a la que queremos que redireccione:
 
-![alt text](/images/redir.png)
+![alt text](images/redir.png)
 
 Comprobamos:
-![alt text](/images/redir2.png)
+![alt text](images/redir2.png)
 
 Cuando damos intro:
-![alt text](/images/redir3.png)
+![alt text](images/redir3.png)
 
 
 ##### Virtual Hosts
@@ -289,9 +293,9 @@ Los ficheros de log de apache se almacenan en "/var/log/apache2".
 
 ##### Comprobación del servidor
 
-![alt text](/images/10.png)
+![alt text](images/10.png)
 
-![alt text](/images/9.png)
+![alt text](images/9.png)
 
 #### 1.1.4 MySQL
 #### 1.1.5 XDebug
@@ -312,64 +316,64 @@ Los ficheros de log de apache se almacenan en "/var/log/apache2".
 
 Para crear un proyecto en NetBeans deberemos de clicar en "File/New Project".
 
-![alt text](/images/1.png)
+![alt text](images/1.png)
 
 Después clicaremos en la categoría de "PHP" y el tipo "PHP Application from Remote Server".
-![alt text](/images/2.png)
+![alt text](images/2.png)
 
 Le daremos un nombre a nuestro proyecto y indicaremos la URL en la que se almacenará el proyecto.
-![alt text](/images/3.png)
+![alt text](images/3.png)
 
 Indicaremos también la URL con la que buscaremos la página en el navegador (IP dek servidor) y el directorio de publicación.
-![alt text](/images/4.png)
+![alt text](images/4.png)
 
 Mediante SFTP crearemos un archivo "index.html" dentro del directorio de publicación.
-![alt text](/images/5.png)
+![alt text](images/5.png)
 
 Confirmaremos los archivos que queramos sincronizar.
-![alt text](/images/6.png)
+![alt text](images/6.png)
 
 Y comprobaremos que cuando cambiamos algo en NetBeans se ejecutan los cambios en la web del servidor.
-![alt text](/images/7.png)
+![alt text](images/7.png)
 
 ##### Configuración de Git en NetBeans
 
 En primer lugar deberemos de dirigirnos a nuestro repositorio de GitHub y copiaremos la URL del repositorio clicando en "<> Code" y en el apartado HTTPS.
-![alt text](/images/11.png)
+![alt text](images/11.png)
 
 En NetBeans en el apartado "Team" deberemos de clicar en la opcion de "Git" y en la opción "Clonar..."
-![alt text](/images/12.png)
+![alt text](images/12.png)
 
 Pegaremos la URL de nuestro repositorio y indicaremos el usuario y la contraseña de la cuenta de GitHub. Tmbién deberemos de indicar la carpeta de destino.
-![alt text](/images/13.png)
+![alt text](images/13.png)
 
 Podremos a su vez indicar que ramas queremos de las que tiene el repositorio. (Si tubiera más aparecerían aquí).
-![alt text](/images/14.png)
+![alt text](images/14.png)
 
 Indicaremos el directorio padre y el nombre de la clonacion.
-![alt text](/images/15.png)
+![alt text](images/15.png)
 
 Al finalizar nos dirá si queremos crear un proyecto a partir del repositorio.
 
-![alt text](/images/16.png)
+![alt text](images/16.png)
 
 Indicaremos el tipo de proyecto.
-![alt text](/images/17.png)
+![alt text](images/17.png)
 
 Le pondremos un nombre y le indicaremos un directorio.
-![alt text](/images/18.png)
+![alt text](images/18.png)
 
 Indicaremos la URL del servidor y su directorio de publicación.
-![alt text](/images/19.png)
+![alt text](images/19.png)
 
 Confirmaremos los archivos.
-![alt text](/images/20.png)
+![alt text](images/20.png)
 
 Y como podemos ver en el Repository Browser tenemos toda la información sobre la clonación.
-![alt text](/images/21.png)
+![alt text](images/21.png)
 
-Al hacer clic derecho en "Source Files" de nuestro proyecto, en el apartado de "Git" podremos administrar todo, por ejemplo hacer un commit, megre etc.
-![alt text](/images/22.png)
+Al hacer clic derecho en "Source Files" de nuestro proyecto, en el apartado de "Git" podremos administrar todo, por ejemplo hacer un commit, merge etc.
+![alt text](images/22.png)
 
 #### 1.2.5 **Visual Studio Code**
 
