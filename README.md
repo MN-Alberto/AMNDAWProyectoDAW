@@ -18,6 +18,8 @@
         - [Instalación](#instalación)
         - [Verficación del servicio](#verficación-del-servicio)
         - [Comprobación del servidor](#comprobación-del-servidor)
+      - [HTTP a HTTPS Server](#http-a-https-server)
+      - [Redirección de HTTP a HTTPS Server](#redirección-de-http-a-https-server)
         - [Virtual Hosts](#virtual-hosts)
         - [Permisos y usuarios](#permisos-y-usuarios)
       - [1.1.3 PHP8.3-fpm](#113-php83-fpm)
@@ -175,6 +177,77 @@ sudo ufw delete [numeroRegla]
 
   ![alt text](/images/8.png)
 
+#### HTTP a HTTPS Server
+
+En primer lugar habilitamos el modulo "ssl"
+
+```
+sudo a2enmod ssl
+```
+
+Después crearemos el certificado autofirmado:
+
+```
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private amn-used.key -out /etc/ssl/certs/amn-used.crt
+```
+
+Comprobamos que se ha creado correctamente con:
+
+```
+sudo ls /etc/ssl/certs | grep amn-used
+
+sudo ls /etc/ssl/private | grep amn-used
+```
+Reiniciamos el servicio de apache:
+
+```
+sudo systemctl restart apache2
+```
+
+Nos dirigiremos al directorio "/etc/apache2/sistes-available" y haremos una copia del fichero "default-ssl.conf"
+
+```
+sudo cp default-ssl.conf amn-used.conf
+```
+
+Dentro de la copia cambiaremos el nombre del certificado y de la clave por los que indicamos al crearlo:
+
+![alt text](/images/htps.png)
+
+Después activaremos el nuevo sitio:
+
+```
+sudo a2ensite amn-used.conf
+```
+
+Reiniciamos el servicio de apache:
+
+```
+sudo systemctl restart apache2
+```
+
+Y por último habilitaremos el puerto 443 en el cortafuegos:
+
+```
+sudo ufw allow 443
+```
+
+Comprobamos:
+
+![alt text](/images/certPrueba.png)
+
+#### Redirección de HTTP a HTTPS Server
+Para redireccionar apache HTTP a HTTPS deberemos de editar el fichero "/etc/apache2/sites-available/000-default.conf" y añadiremos la linea "Redirect" con la URL a la que queremos que redireccione:
+
+![alt text](/images/redir.png)
+
+Comprobamos:
+![alt text](/images/redir2.png)
+
+Cuando damos intro:
+![alt text](/images/redir3.png)
+
+
 ##### Virtual Hosts
 ##### Permisos y usuarios
   ```
@@ -183,22 +256,17 @@ sudo ufw delete [numeroRegla]
   sudo chown -R operadorweb:www-data /var/www/html
 
   sudo chmod -R 775 /var/www/html
+  
 ```
+##### Permisos y usuarios
+Los ficheros de log de apache se almacenan en "/var/log/apache2".
+
 #### 1.1.3 PHP8.3-fpm
 ##### Instalación
 
  ```
-  sudo apt install software-properties-common -y
 
-  sudo add-apt-repository ppa:ondrej/php -y
-
-  ls /etc/apt/sources.list.d/ | grep ondrej
-
-  sudo apt update
-
-  sudo apt install libapache2-mod-php8.3 php8.3-fpm -y
-
-  sudo a2dismod mpm_prefork php8.3
+  sudo apt install php8.3-fpm php8.3 -y
 
   sudo a2enmod mpm_event proxy_fcgi
   ```
