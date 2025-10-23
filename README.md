@@ -18,9 +18,12 @@
         - [Instalación](#instalación)
         - [Verficación del servicio](#verficación-del-servicio)
         - [Comprobación del servidor](#comprobación-del-servidor)
+      - [HTTP a HTTPS Server](#http-a-https-server)
+      - [Redirección de HTTP a HTTPS Server](#redirección-de-http-a-https-server)
         - [Virtual Hosts](#virtual-hosts)
         - [Permisos y usuarios](#permisos-y-usuarios)
-      - [1.1.3 PHP](#113-php)
+        - [Permisos y usuarios](#permisos-y-usuarios-1)
+      - [1.1.3 PHP8.3-fpm](#113-php83-fpm)
         - [Instalación](#instalación-1)
         - [Verificación del servicio](#verificación-del-servicio)
         - [Comprobación del servidor](#comprobación-del-servidor-1)
@@ -35,9 +38,10 @@
         - [**Nombre y configuración de red**](#nombre-y-configuración-de-red)
         - [**Cuentas administradoras**](#cuentas-administradoras-1)
       - [1.2.2 **Navegadores**](#122-navegadores)
-      - [1.2.3 **FileZilla**](#123-filezilla)
+      - [1.2.3 **MobaXterm**](#123-mobaxterm)
       - [1.2.4 **Netbeans**](#124-netbeans)
         - [Creación de proyectos](#creación-de-proyectos)
+        - [Configuración de Git en NetBeans](#configuración-de-git-en-netbeans)
       - [1.2.5 **Visual Studio Code**](#125-visual-studio-code)
   - [2. GitHub](#2-github)
   - [3.Entorno de Explotación](#3entorno-de-explotación)
@@ -174,6 +178,77 @@ sudo ufw delete [numeroRegla]
 
   ![alt text](/images/8.png)
 
+#### HTTP a HTTPS Server
+
+En primer lugar habilitamos el modulo "ssl"
+
+```
+sudo a2enmod ssl
+```
+
+Después crearemos el certificado autofirmado:
+
+```
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private amn-used.key -out /etc/ssl/certs/amn-used.crt
+```
+
+Comprobamos que se ha creado correctamente con:
+
+```
+sudo ls /etc/ssl/certs | grep amn-used
+
+sudo ls /etc/ssl/private | grep amn-used
+```
+Reiniciamos el servicio de apache:
+
+```
+sudo systemctl restart apache2
+```
+
+Nos dirigiremos al directorio "/etc/apache2/sistes-available" y haremos una copia del fichero "default-ssl.conf"
+
+```
+sudo cp default-ssl.conf amn-used.conf
+```
+
+Dentro de la copia cambiaremos el nombre del certificado y de la clave por los que indicamos al crearlo:
+
+![alt text](/images/htps.png)
+
+Después activaremos el nuevo sitio:
+
+```
+sudo a2ensite amn-used.conf
+```
+
+Reiniciamos el servicio de apache:
+
+```
+sudo systemctl restart apache2
+```
+
+Y por último habilitaremos el puerto 443 en el cortafuegos:
+
+```
+sudo ufw allow 443
+```
+
+Comprobamos:
+
+![alt text](/images/certPrueba.png)
+
+#### Redirección de HTTP a HTTPS Server
+Para redireccionar apache HTTP a HTTPS deberemos de editar el fichero "/etc/apache2/sites-available/000-default.conf" y añadiremos la linea "Redirect" con la URL a la que queremos que redireccione:
+
+![alt text](/images/redir.png)
+
+Comprobamos:
+![alt text](/images/redir2.png)
+
+Cuando damos intro:
+![alt text](/images/redir3.png)
+
+
 ##### Virtual Hosts
 ##### Permisos y usuarios
   ```
@@ -182,34 +257,30 @@ sudo ufw delete [numeroRegla]
   sudo chown -R operadorweb:www-data /var/www/html
 
   sudo chmod -R 775 /var/www/html
+  
 ```
-#### 1.1.3 PHP
+##### Permisos y usuarios
+Los ficheros de log de apache se almacenan en "/var/log/apache2".
+
+#### 1.1.3 PHP8.3-fpm
 ##### Instalación
 
  ```
-  sudo apt install software-properties-common -y
 
-  sudo add-apt-repository ppa:ondrej/php -y
-
-  ls /etc/apt/sources.list.d/ | grep ondrej
-
-  sudo apt update
-
-  sudo apt install libapache2-mod-php8.3 php8.3-fpm -y
-
-  sudo a2dismod mpm_prefork php8.3
+  sudo apt install php8.3-fpm php8.3 -y
 
   sudo a2enmod mpm_event proxy_fcgi
+  ```
 
+  Configuramos el sitio activo:
+
+  ```
+  
   cd /etc/apache2/sites-enabled/
 
   sudo nano 000-default.conf
-  ```
 
-  Añadimos:
-
-  ```
-    ProxyPassMatch ^/(.*\.php)$ unix:/run/php/php8.3-fpm.sock|fcgi://127.0.0.1/var/www/html
+  ProxyPassMatch ^/(.*\.php)$ unix:/run/php/php8.3-fpm.sock|fcgi://127.0.0.1/var/www/html
   ```
 
 ##### Verificación del servicio
@@ -235,7 +306,7 @@ sudo ufw delete [numeroRegla]
 ##### **Nombre y configuración de red**
 ##### **Cuentas administradoras**
 #### 1.2.2 **Navegadores**
-#### 1.2.3 **FileZilla**
+#### 1.2.3 **MobaXterm**
 #### 1.2.4 **Netbeans**
 
 ##### Creación de proyectos
@@ -261,6 +332,46 @@ Confirmaremos los archivos que queramos sincronizar.
 
 Y comprobaremos que cuando cambiamos algo en NetBeans se ejecutan los cambios en la web del servidor.
 ![alt text](/images/7.png)
+
+##### Configuración de Git en NetBeans
+
+En primer lugar deberemos de dirigirnos a nuestro repositorio de GitHub y copiaremos la URL del repositorio clicando en "<> Code" y en el apartado HTTPS.
+![alt text](/images/11.png)
+
+En NetBeans en el apartado "Team" deberemos de clicar en la opcion de "Git" y en la opción "Clonar..."
+![alt text](/images/12.png)
+
+Pegaremos la URL de nuestro repositorio y indicaremos el usuario y la contraseña de la cuenta de GitHub. Tmbién deberemos de indicar la carpeta de destino.
+![alt text](/images/13.png)
+
+Podremos a su vez indicar que ramas queremos de las que tiene el repositorio. (Si tubiera más aparecerían aquí).
+![alt text](/images/14.png)
+
+Indicaremos el directorio padre y el nombre de la clonacion.
+![alt text](/images/15.png)
+
+Al finalizar nos dirá si queremos crear un proyecto a partir del repositorio.
+
+![alt text](/images/16.png)
+
+Indicaremos el tipo de proyecto.
+![alt text](/images/17.png)
+
+Le pondremos un nombre y le indicaremos un directorio.
+![alt text](/images/18.png)
+
+Indicaremos la URL del servidor y su directorio de publicación.
+![alt text](/images/19.png)
+
+Confirmaremos los archivos.
+![alt text](/images/20.png)
+
+Y como podemos ver en el Repository Browser tenemos toda la información sobre la clonación.
+![alt text](/images/21.png)
+
+Al hacer clic derecho en "Source Files" de nuestro proyecto, en el apartado de "Git" podremos administrar todo, por ejemplo hacer un commit, merge etc.
+![alt text](/images/22.png)
+
 #### 1.2.5 **Visual Studio Code**
 
 ## 2. GitHub
