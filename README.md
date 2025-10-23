@@ -22,7 +22,6 @@
       - [Redirección de HTTP a HTTPS Server](#redirección-de-http-a-https-server)
         - [Virtual Hosts](#virtual-hosts)
         - [Permisos y usuarios](#permisos-y-usuarios)
-        - [Permisos y usuarios](#permisos-y-usuarios-1)
       - [1.1.3 PHP8.3-fpm](#113-php83-fpm)
         - [Instalación](#instalación-1)
         - [Verificación del servicio](#verificación-del-servicio)
@@ -369,7 +368,7 @@ Confirmaremos los archivos.
 Y como podemos ver en el Repository Browser tenemos toda la información sobre la clonación.
 ![alt text](/images/21.png)
 
-Al hacer clic derecho en "Source Files" de nuestro proyecto, en el apartado de "Git" podremos administrar todo, por ejemplo hacer un commit, merge etc.
+Al hacer clic derecho en "Source Files" de nuestro proyecto, en el apartado de "Git" podremos administrar todo, por ejemplo hacer un commit, megre etc.
 ![alt text](/images/22.png)
 
 #### 1.2.5 **Visual Studio Code**
