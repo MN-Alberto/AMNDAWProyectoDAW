@@ -17,12 +17,12 @@
       - [1.1.2 Instalación del servidor web](#112-instalación-del-servidor-web)
         - [Instalación](#instalación)
         - [Verficación del servicio](#verficación-del-servicio)
+        - [Ficheros log](#ficheros-log)
         - [Comprobación del servidor](#comprobación-del-servidor)
       - [HTTP a HTTPS Server](#http-a-https-server)
       - [Redirección de HTTP a HTTPS Server](#redirección-de-http-a-https-server)
         - [Virtual Hosts](#virtual-hosts)
         - [Permisos y usuarios](#permisos-y-usuarios)
-        - [Permisos y usuarios](#permisos-y-usuarios-1)
       - [1.1.3 PHP8.3-fpm](#113-php83-fpm)
         - [Instalación](#instalación-1)
         - [Verificación del servicio](#verificación-del-servicio)
@@ -173,6 +173,8 @@ sudo ufw delete [numeroRegla]
   sudo systemctl status apache2
   sudo ufw allow 80
 ```
+##### Ficheros log
+Los ficheros de log de apache se almacenan en "/var/log/apache2".
 
 ##### Comprobación del servidor
 
@@ -254,6 +256,7 @@ Cuando damos intro:
 
 ##### Virtual Hosts
 ##### Permisos y usuarios
+Creamos una cuenta para la publicación de contenidos en nuestra web:
   ```
   sudo adduser --home /var/www/html --ingroup www-data --shell /bin/bash operadorweb
 
@@ -262,8 +265,6 @@ Cuando damos intro:
   sudo chmod -R 775 /var/www/html
   
 ```
-##### Permisos y usuarios
-Los ficheros de log de apache se almacenan en "/var/log/apache2".
 
 #### 1.1.3 PHP8.3-fpm
 ##### Instalación
