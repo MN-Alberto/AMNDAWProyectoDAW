@@ -27,7 +27,10 @@
         - [Instalación](#instalación-1)
         - [Verificación del servicio](#verificación-del-servicio)
         - [Comprobación del servidor](#comprobación-del-servidor-1)
-      - [1.1.4 MySQL](#114-mysql)
+      - [1.1.4 MariaDB](#114-mariadb)
+      - [Instalación](#instalación-2)
+      - [Módulos relacionados con PHP](#módulos-relacionados-con-php)
+      - [Comprobación desde NetBeans](#comprobación-desde-netbeans)
       - [1.1.5 XDebug](#115-xdebug)
       - [1.1.6 DNS](#116-dns)
       - [1.1.7 SFTP](#117-sftp)
@@ -124,6 +127,7 @@ sudo timedatectl set-timezone Europe/Madrid
 > - [X] root(inicio)
 > - [X] miadmin/paso
 > - [X] miadmin2/paso
+> - [X] adminsql/paso
 
 ##### **Cuentas no administradoras**
 > - [X] operadorweb/paso
@@ -298,7 +302,82 @@ Creamos una cuenta para la publicación de contenidos en nuestra web:
 
 ![alt text](images/9.PNG)
 
-#### 1.1.4 MySQL
+#### 1.1.4 MariaDB
+#### Instalación
+En primero lugar actualizaremos nuestro servidor con:
+```
+    sudo apt update
+```
+Luego instalaremos el servicio "mariadb-server":
+```
+    sudo apt install mariadb-server
+```
+Al instalarlo iniciaremos el servicio:
+```
+    sudo service mariadb start
+```
+Y comprobaremos el estado con:
+```
+    sudo service mariadb status
+```
+Comprobaremos la version de mariadb con:
+```
+    sudo mariadb --version
+```
+Entraremos en el fichero de configuracion de mariaDB y cambiaremos el apartado "bind-address" por "0.0.0.0":
+    sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
+![alt text](images/confMariadb.png)
+
+Comprobamos el puerto por defecto que utiliza mariaDB (3306):
+![alt text](images/puertoMariadb.png)
+
+A continuacion deberemos de crear un usuario "adminsql" de contraseña "paso".
+Para ello entraremos en la consola de MariaDB con "sudo mariadb" y los siguientes comandos:
+
+Creación del usuario:
+
+![alt text](images/usuarioSql.png)
+
+Configuración de permisos de administrador:
+
+![alt text](images/permisosUsuario.png)
+
+Mysql tiene un modo de instalación seguro para evitar brechas de seguridad, lo ejecutaremos con "sudo mysql_secure_installation" y responderemos a las preguntas en función de nuestras preferencias:
+![alt text](images/mysqlSi.png)
+
+![alt text](images/mysqlSi2.png)
+
+Una de las preguntas ha sido si queriamos que el usuario "root" tubiera contraseña, lo comprobamos con el siguiente comando:
+![alt text](images/compRoot.png)
+
+
+#### Módulos relacionados con PHP
+Deberemos de instalar el módulo que integra mysql con php8.3-fpm con:
+![alt text](images/moduloMysql.png)
+
+Comprobaremos que se ha instalado correctamente con:
+![alt text](images/comprobarModulos.png)
+
+#### Comprobación desde NetBeans
+En primer lugar deberemos de ir al apartado de "Services" y hacer clic derecho en "Databases". Deberemos de entrar en "New Connection...":
+
+![alt text](images/comprobarSql/1.png)
+
+A continuación deberemos de elegir el driver que queremos utilizar, en este caso MariaDB (MySQL-compatible) y indicarle el archivo del driver que hemos bajado de internet:
+
+![alt text](images/comprobarSql/2.png)
+
+Deberemos de indicar la IP de nuestro servidor, el puerto, la base de datos a la que queremos conectarnos, y el usuario y password que hemos creado anteriormente:
+![alt text](images/comprobarSql/3.png)
+
+
+Como podemos comprobar nos hemos conectado correctamente:
+![alt text](images/comprobarSql/4.png)
+
+Para ejecutar un script deberemos de hacer click derecho en la conexión y entraremos en "Execute Command":
+![alt text](images/comprobarSql/5.png)
+
+
 #### 1.1.5 XDebug
 #### 1.1.6 DNS
 #### 1.1.7 SFTP
