@@ -379,6 +379,13 @@ Para ejecutar un script deberemos de hacer click derecho en la conexión y entra
 
 
 #### 1.1.5 XDebug
+
+![alt text](images/xDebug/1.PNG)
+![alt text](images/xDebug/2.PNG)
+![alt text](images/xDebug/5.PNG)
+![alt text](images/xDebug/3.PNG)
+![alt text](images/xDebug/4.PNG)
+
 #### 1.1.6 DNS
 #### 1.1.7 SFTP
 #### 1.1.8 Apache Tomcat
