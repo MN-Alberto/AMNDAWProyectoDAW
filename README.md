@@ -14,40 +14,41 @@
         - [**Cuentas no administradoras**](#cuentas-no-administradoras)
         - [**Comprobar cuentas:**](#comprobar-cuentas)
         - [**Habilitar cortafuegos**](#habilitar-cortafuegos)
-      - [1.1.2 Instalación del servidor web](#112-instalación-del-servidor-web)
-        - [Instalación](#instalación)
-        - [Verficación del servicio](#verficación-del-servicio)
-        - [Ficheros log](#ficheros-log)
-        - [Comprobación del servidor](#comprobación-del-servidor)
-      - [HTTP a HTTPS Server](#http-a-https-server)
-      - [Redirección de HTTP a HTTPS Server](#redirección-de-http-a-https-server)
-        - [Virtual Hosts](#virtual-hosts)
-        - [Permisos y usuarios](#permisos-y-usuarios)
-      - [1.1.3 PHP8.3-fpm](#113-php83-fpm)
-        - [Instalación](#instalación-1)
-        - [Verificación del servicio](#verificación-del-servicio)
-        - [Comprobación del servidor](#comprobación-del-servidor-1)
-      - [1.1.4 MariaDB](#114-mariadb)
-      - [Instalación](#instalación-2)
-      - [Módulos relacionados con PHP](#módulos-relacionados-con-php)
-      - [Comprobación desde NetBeans](#comprobación-desde-netbeans)
-      - [1.1.5 XDebug](#115-xdebug)
-      - [1.1.6 DNS](#116-dns)
-      - [1.1.7 SFTP](#117-sftp)
-      - [1.1.8 Apache Tomcat](#118-apache-tomcat)
-      - [1.1.9 LDAP](#119-ldap)
-    - [1.2 Windows 11](#12-windows-11)
-      - [1.2.1 **Configuración inicial**](#121-configuración-inicial)
+      - [**1.1.2 Instalación del servidor web**](#112-instalación-del-servidor-web)
+        - [**Instalación**](#instalación)
+        - [**Verficación del servicio**](#verficación-del-servicio)
+        - [**Ficheros log**](#ficheros-log)
+        - [**Comprobación del servidor**](#comprobación-del-servidor)
+      - [**HTTP a HTTPS Server**](#http-a-https-server)
+      - [**Redirección de HTTP a HTTPS Server**](#redirección-de-http-a-https-server)
+        - [**Virtual Hosts**](#virtual-hosts)
+        - [**Permisos y usuarios**](#permisos-y-usuarios)
+      - [**1.1.3 PHP8.3-fpm**](#113-php83-fpm)
+        - [**Instalación**](#instalación-1)
+        - [**Verificación del servicio**](#verificación-del-servicio)
+        - [**Comprobación del servidor**](#comprobación-del-servidor-1)
+      - [**1.1.4 MariaDB**](#114-mariadb)
+      - [**Instalación**](#instalación-2)
+      - [**Módulos relacionados con PHP**](#módulos-relacionados-con-php)
+      - [**Comprobación desde NetBeans**](#comprobación-desde-netbeans)
+      - [**1.1.5 XDebug**](#115-xdebug)
+      - [**1.1.6 DNS**](#116-dns)
+      - [**1.1.7 SFTP**](#117-sftp)
+        - [**Enjaular un usuario**](#enjaular-un-usuario)
+      - [**1.1.8 Apache Tomcat**](#118-apache-tomcat)
+      - [**1.1.9 LDAP**](#119-ldap)
+    - [**1.2 Windows 11**](#12-windows-11)
+      - [\*\*1.2.1 **Configuración inicial**](#121-configuración-inicial)
         - [**Nombre y configuración de red**](#nombre-y-configuración-de-red)
         - [**Cuentas administradoras**](#cuentas-administradoras-1)
       - [1.2.2 **Navegadores**](#122-navegadores)
       - [1.2.3 **MobaXterm**](#123-mobaxterm)
       - [1.2.4 **Netbeans**](#124-netbeans)
-        - [Creación de proyectos](#creación-de-proyectos)
-        - [Configuración de Git en NetBeans](#configuración-de-git-en-netbeans)
+        - [**Creación de proyectos**](#creación-de-proyectos)
+        - [**Configuración de Git en NetBeans**](#configuración-de-git-en-netbeans)
       - [1.2.5 **Visual Studio Code**](#125-visual-studio-code)
-  - [2. GitHub](#2-github)
-  - [3.Entorno de Explotación](#3entorno-de-explotación)
+  - [2. **GitHub**](#2-github)
+  - [3. **Entorno de Explotación**](#3-entorno-de-explotación)
 
 |  DAW/DWES Tema2 |
 |:-----------:|
@@ -115,12 +116,16 @@ sudo apt update
 sudo apt upgrade
 ```
 
+---
+
 ##### **Configuración fecha y hora**
 
 [Establecer fecha, hora y zona horaria](https://somebooks.es/establecer-la-fecha-hora-y-zona-horaria-en-la-terminal-de-ubuntu-20-04-lts/ "Cambiar fecha y hora")
 ```
 sudo timedatectl set-timezone Europe/Madrid
 ```
+
+---
 
 ##### **Cuentas administradoras**
 
@@ -142,6 +147,8 @@ groups nombreCuenta
 
 sudo useradd -m -G [grupos,grupos] -s /bin/bash miadmin3
 ```
+
+---
 
 ##### **Habilitar cortafuegos**
 
@@ -165,26 +172,28 @@ sudo ufw status numbered
 sudo ufw delete [numeroRegla]
 ```
 
-#### 1.1.2 Instalación del servidor web
+#### **1.1.2 Instalación del servidor web**
 
-##### Instalación
+##### **Instalación**
 ```
   sudo apt install apache2
 ```
-##### Verficación del servicio
+##### **Verficación del servicio**
 ```
   sudo service apache2 start
   sudo systemctl status apache2
   sudo ufw allow 80
 ```
-##### Ficheros log
+##### **Ficheros log**
 Los ficheros de log de apache se almacenan en "/var/log/apache2".
 
-##### Comprobación del servidor
+##### **Comprobación del servidor**
 
   ![alt text](images/8.PNG)
 
-#### HTTP a HTTPS Server
+---
+
+#### **HTTP a HTTPS Server**
 
 Así funciona HTTPS:
   ![alt text](images/imagenhttps.png)
@@ -246,20 +255,77 @@ Comprobamos:
 
 ![alt text](images/certPrueba.PNG)
 
-#### Redirección de HTTP a HTTPS Server
-Para redireccionar apache HTTP a HTTPS deberemos de editar el fichero "/etc/apache2/sites-available/000-default.conf" y añadiremos la linea "Redirect" con la URL a la que queremos que redireccione:
+#### **Redirección de HTTP a HTTPS Server**
+Para redireccionar apache HTTP a HTTPS deberemos de habilitar el módulo "rewrite" y editar el fichero ".htaccess" del directorio raíz de publicación y añadiremos las siguientes directivas.
 
-![alt text](images/redir.PNG)
+En primer lugar habilitaremos el módulo "rewrite":
 
-Comprobamos:
-![alt text](images/redir2.PNG)
+```
+sudo a2enmod rewrite
+```
 
-Cuando damos intro:
-![alt text](images/redir3.PNG)
+Después reiniciaremos apache:
+
+```
+sudo systemctl restart apache2
+```
+
+A continuación en el fichero ".htaccess" del raíz de publicación podremos las siguientes directivas:
+
+![alt text](images/htaccessRedireccion.PNG)
+
+Y al finalizar reiniciaremos de nuevo apache y podremos comprobar que al acceder a la URL mediante http el servidor redirecciona automaticamente a https.
+
+##### **Virtual Hosts**
+Vamos a configurar un sitio virtual llamado "sitio1.albertomennun.ieslossauces.es".
+
+Para ello en primer lugar, deberemos de acceder al panel de configuración de nuestro hosting, y clicaremos en el apartado "Hosting y DNS" y en la opción "DNS"
+![alt text](images/SITIOS/0.1.PNG)
+
+A continuación clicaremos en "+ Añadir registro"
+![alt text](images/SITIOS/0.2.PNG)
+
+Después le podremos indicar el tipo de registro, el nombre de dominio, el TTL (Time To Life) y la dirección IP de nuestro servidor.
+![alt text](images/SITIOS/0.3.PNG)
 
 
-##### Virtual Hosts
-##### Permisos y usuarios
+Como podemos comprobar se ha creado correctamente.
+![alt text](images/SITIOS/0.4.PNG)
+
+
+Ahora vamos a configurar nuestro sitio en nuestro servidor apache.
+
+En primer lugar deberemos de ir al directorio "/etc/apache2/sites-available" y copiaremos el sitio "000-default.conf" con el nombre de nuestro sitio remplazando los puntos por guiones .conf "sitio1-albertomennun-ieslossauces-es.conf".
+
+![alt text](images/SITIOS/1.PNG)
+
+
+Editaremos el fichero y añadiremos el "ServerName" y modificaremos el "DocumentRoot", el "ErrorLog" y el "ProxyPassMatch".
+![alt text](images/SITIOS/4.PNG)
+
+
+A continuación nos dirigiremos al directorio "/var/www/usuarioEnjaulado1" y crearemos el directorio "error".
+![alt text](images/SITIOS/5.PNG)
+
+
+Después comprobaremos los permisos de la carpeta error y modificaremos su propietario para que sea "usuarioEnjaulado1" y al grupo "www-data". También cambiaremoslos permisos de la carpeta a 775.
+![alt text](images/SITIOS/6.PNG)
+
+Luego deberemos de habilitar el sitio y reiniciar el servicio apache.
+![alt text](images/SITIOS/7.PNG)
+
+A continuación nos conectaremos mediante SFTP con el usuario usuarioEnjaulado1 y en la carpeta htdocs pegaremos la aplicacion que queremos subir.
+![alt text](images/SITIOS/8.1.PNG)
+
+Después modificaremos el archivo ".htaccess" y indicaremos el "DirectoryIndex" que en este caso es "indexProyectoTema4.php".
+
+![alt text](images/SITIOS/8.PNG)
+
+Y por ultimo comprobamos que accediendo en el navegador a "sitio1.albertomennun.ieslossauces.es" nos llevará a nuestro nuevo sitio.
+
+![alt text](images/SITIOS/9.PNG)
+
+##### **Permisos y usuarios**
 Creamos una cuenta para la publicación de contenidos en nuestra web:
   ```
   sudo adduser --home /var/www/html --ingroup www-data --shell /bin/bash operadorweb
@@ -270,8 +336,8 @@ Creamos una cuenta para la publicación de contenidos en nuestra web:
   
 ```
 
-#### 1.1.3 PHP8.3-fpm
-##### Instalación
+#### **1.1.3 PHP8.3-fpm**
+##### **Instalación**
 
  ```
 
@@ -291,19 +357,19 @@ Creamos una cuenta para la publicación de contenidos en nuestra web:
   ProxyPassMatch ^/(.*\.php)$ unix:/run/php/php8.3-fpm.sock|fcgi://127.0.0.1/var/www/html
   ```
 
-##### Verificación del servicio
+##### **Verificación del servicio**
    ```
     sudo service php8.3-fpm status
    ```
 
-##### Comprobación del servidor
+##### **Comprobación del servidor**
 
 ![alt text](images/10.PNG)
 
 ![alt text](images/9.PNG)
 
-#### 1.1.4 MariaDB
-#### Instalación
+#### **1.1.4 MariaDB**
+#### **Instalación**
 En primero lugar actualizaremos nuestro servidor con:
 ```
     sudo apt update
@@ -351,14 +417,14 @@ Una de las preguntas ha sido si queriamos que el usuario "root" tubiera contrase
 ![alt text](images/compRoot.png)
 
 
-#### Módulos relacionados con PHP
+#### **Módulos relacionados con PHP**
 Deberemos de instalar el módulo que integra mysql con php8.3-fpm con:
 ![alt text](images/moduloMysql.png)
 
 Comprobaremos que se ha instalado correctamente con:
 ![alt text](images/comprobarModulos.png)
 
-#### Comprobación desde NetBeans
+#### **Comprobación desde NetBeans**
 En primer lugar deberemos de ir al apartado de "Services" y hacer clic derecho en "Databases". Deberemos de entrar en "New Connection...":
 
 ![alt text](images/comprobarSql/1.png)
@@ -378,7 +444,7 @@ Para ejecutar un script deberemos de hacer click derecho en la conexión y entra
 ![alt text](images/comprobarSql/5.png)
 
 
-#### 1.1.5 XDebug
+#### **1.1.5 XDebug**
 
 ![alt text](images/xDebug/1.PNG)
 ![alt text](images/xDebug/2.PNG)
@@ -386,20 +452,61 @@ Para ejecutar un script deberemos de hacer click derecho en la conexión y entra
 ![alt text](images/xDebug/3.PNG)
 ![alt text](images/xDebug/4.PNG)
 
-#### 1.1.6 DNS
-#### 1.1.7 SFTP
-#### 1.1.8 Apache Tomcat
-#### 1.1.9 LDAP
+#### **1.1.6 DNS**
+#### **1.1.7 SFTP**
 
-### 1.2 Windows 11
-#### 1.2.1 **Configuración inicial**
+
+##### **Enjaular un usuario**
+
+Vamos a enjaular el usuario "usuarioEnjaulado1" en el directorio "/var/www/usuarioEnjaulado1".
+
+Para ello, en primer lugar, deberemos de crear ungrupo en el que vamos a meter los usuarios que queramos enjaular:
+```
+  sudo addgroup sftpusers
+```
+![alt text](images/enjaular/1.png)
+
+A continuación crearemos el usuario "usuarioEnjaulado1", haciendo que pertenezca a los grupos "www-data" y "sftpusers", además haremos que el home del usuario sea "/var/www/usuarioEnjaulado1":
+
+![alt text](images/enjaular/2.PNG)
+
+Después cambiaremos el propietario del directorio "/var/www/usuarioEnjaulado1" a "root" y cambiaremos los permisos a solo lectura:
+
+![alt text](images/enjaular/3.PNG)
+
+Crearemos la carpeta "htdocs" en "/var/www/usuarioEnjaulado1" y cambiaremos los permisos de la carpeta y su propietario que ahora será "usuarioEnjaulado1":
+
+![alt text](images/enjaular/4.PNG)
+
+A continuación nos dirigiremos al directorio "/etc/ssh" y haremos una copia de seguridad del fichero "sshd_config" y editaremos el fichero existente, no la copia:
+
+![alt text](images/enjaular/5.PNG)
+
+![alt text](images/enjaular/6.PNG)
+
+Reiniciaremos el servicio:
+
+```
+  sudo service ssh restart
+```
+
+Por ultimo nos conectaremos mediante sftp y el usuario "usuarioEnjaulado1" y comprobaremos que el usuario no puede moverse de el directorio indicado:
+
+![alt text](images/enjaular/7.PNG)
+
+
+#### **1.1.8 Apache Tomcat**
+#### **1.1.9 LDAP**
+
+### **1.2 Windows 11**
+#### **1.2.1 **Configuración inicial**
 ##### **Nombre y configuración de red**
 ##### **Cuentas administradoras**
 #### 1.2.2 **Navegadores**
 #### 1.2.3 **MobaXterm**
 #### 1.2.4 **Netbeans**
 
-##### Creación de proyectos
+##### **Creación de proyectos**
 
 Para crear un proyecto en NetBeans deberemos de clicar en "File/New Project".
 
@@ -423,7 +530,7 @@ Confirmaremos los archivos que queramos sincronizar.
 Y comprobaremos que cuando cambiamos algo en NetBeans se ejecutan los cambios en la web del servidor.
 ![alt text](images/7.png)
 
-##### Configuración de Git en NetBeans
+##### **Configuración de Git en NetBeans**
 
 En primer lugar deberemos de dirigirnos a nuestro repositorio de GitHub y copiaremos la URL del repositorio clicando en "<> Code" y en el apartado HTTPS.
 ![alt text](images/11.png)
@@ -464,8 +571,23 @@ Al hacer clic derecho en "Source Files" de nuestro proyecto, en el apartado de "
 
 #### 1.2.5 **Visual Studio Code**
 
-## 2. GitHub
-## 3.Entorno de Explotación
+## 2. **GitHub**
+
+Utilizaremos GitHub para subir nuestros proyectos y versionarlos poco a poco.
+En cada proyecto tendremos una rama developer y una rama master.
+
+
+
+## 3. **Entorno de Explotación**
+
+Nuestra aplicación web estará alojada en Plesk.
+Nos conectaremos a nuestro panel de control mediante la url: https://ieslossauces.es:8443/login_up.php
+
+![alt text](images/entornoExplotacion/1.PNG)
+
+Aqui podremos administrar cualquier aspecto de nuestra pagina
+
+![alt text](images/entornoExplotacion/2.PNG)
 
 ---
 
