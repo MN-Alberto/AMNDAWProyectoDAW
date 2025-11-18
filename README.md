@@ -6,7 +6,7 @@
   - [1. Entorno de Desarrollo](#1-entorno-de-desarrollo)
     - [1.1 Ubuntu Server 24.04.3 LTS](#11-ubuntu-server-24043-lts)
       - [1.1.1 **Configuración inicial**](#111-configuración-inicial)
-        - [Nombre y configuraicón de red](#nombre-y-configuraicón-de-red)
+        - [Nombre y configuración de red](#nombre-y-configuración-de-red)
       - [Comandos de comprobación:](#comandos-de-comprobación)
         - [**Actualizar el sistema**](#actualizar-el-sistema)
         - [**Configuración fecha y hora**](#configuración-fecha-y-hora)
@@ -39,7 +39,7 @@
       - [**1.1.9 LDAP**](#119-ldap)
     - [**1.2 Windows 11**](#12-windows-11)
       - [\*\*1.2.1 **Configuración inicial**](#121-configuración-inicial)
-        - [**Nombre y configuración de red**](#nombre-y-configuración-de-red)
+        - [**Nombre y configuración de red**](#nombre-y-configuración-de-red-1)
         - [**Cuentas administradoras**](#cuentas-administradoras-1)
       - [1.2.2 **Navegadores**](#122-navegadores)
       - [1.2.3 **MobaXterm**](#123-mobaxterm)
@@ -63,7 +63,7 @@ Este documento es una guía detallada del proceso de instalación y configuraci�
 
 #### 1.1.1 **Configuración inicial**
 
-##### Nombre y configuraicón de red
+##### Nombre y configuración de red
 
 > **Nombre de la máquina**: daw-used\
 > **Memoria RAM**: 2G\
@@ -105,15 +105,15 @@ network:
   version: 2
 ````
 Aplicamos la configuración de red con:
-````
-sudo netplan apply
+````bash
+sudo netplan apply  #Aplica la configuración de red.
 ````
 
 ##### **Actualizar el sistema**
 
 ```bash
-sudo apt update
-sudo apt upgrade
+sudo apt update     #Recopila las posibles actualizaciones del sistema.
+sudo apt upgrade    #Instala las actualizaciones recopiladas.
 ```
 
 ---
@@ -121,8 +121,8 @@ sudo apt upgrade
 ##### **Configuración fecha y hora**
 
 [Establecer fecha, hora y zona horaria](https://somebooks.es/establecer-la-fecha-hora-y-zona-horaria-en-la-terminal-de-ubuntu-20-04-lts/ "Cambiar fecha y hora")
-```
-sudo timedatectl set-timezone Europe/Madrid
+```bash
+sudo timedatectl set-timezone Europe/Madrid   #Establece la fecha y hora a la zona horaria "Europe/Madrid".
 ```
 
 ---
@@ -138,14 +138,14 @@ sudo timedatectl set-timezone Europe/Madrid
 > - [X] operadorweb/paso
 
 ##### **Comprobar cuentas:**
-```
-cat /etc/passwd | grep nombreCuenta
+```bash
+cat /etc/passwd | grep nombreCuenta   #Muestra  las líneas del fichero "/etc/passwd" en las que aparezca el nombreCuenta que indicamos. 
 
-id nombreCuenta
+id nombreCuenta   #Muestra los grupos del usuario.
 
-groups nombreCuenta
+groups nombreCuenta   #Muestra los grupos del usuario.
 
-sudo useradd -m -G [grupos,grupos] -s /bin/bash miadmin3
+sudo useradd -m -G [grupos,grupos] -s /bin/bash miadmin3    #Añade un nuevo usuario a los grupos indicados y le indica un shell.
 ```
 
 ---
@@ -153,36 +153,37 @@ sudo useradd -m -G [grupos,grupos] -s /bin/bash miadmin3
 ##### **Habilitar cortafuegos**
 
 Como activar cortafuegos
-```
-sudo ufw enable
+```bash
+sudo ufw enable   #Habilita el cortafuegos.
 ```
 Abrir el puerto del ssh(22)
-```
-sudo ufw allow 22
+
+```bash
+sudo ufw allow 22   #Permite la conexión por el puerto 22.
 ```
 Comprobamos el estado del cortafuegos y puertos
-```
-sudo ufw status
+```bash
+sudo ufw status   #Muestra el estado del cortafuegos y los puertos abiertos.
 ```
 
 Para borrar el puerto v6
-```
-sudo ufw status numbered
+```bash
+sudo ufw status numbered  #Muestra el estado del cortafuegos mostrando el número de regla que identifica a cada puerto.  
 
-sudo ufw delete [numeroRegla]
+sudo ufw delete [numeroRegla]   #Elimina el puerto al indicarle su número de regla correspondiente.
 ```
 
 #### **1.1.2 Instalación del servidor web**
 
 ##### **Instalación**
-```
-  sudo apt install apache2
+```bash
+  sudo apt install apache2    #Instalamos el servicio apache.
 ```
 ##### **Verficación del servicio**
-```
-  sudo service apache2 start
-  sudo systemctl status apache2
-  sudo ufw allow 80
+```bash
+  sudo service apache2 start    #Arrancamos el servicio apache.
+  sudo systemctl status apache2   #Mostramos el estado del servicio.
+  sudo ufw allow 80   #Habilitamos el puerto 80 en el cortafuegos ya que es el que utiliza por defecto para escuchar las peticiones del navegador del cliente.
 ```
 ##### **Ficheros log**
 Los ficheros de log de apache se almacenan en "/var/log/apache2".
@@ -200,32 +201,34 @@ Así funciona HTTPS:
 
 En primer lugar habilitamos el modulo "ssl"
 
-```
-sudo a2enmod ssl
+```bash
+sudo a2enmod ssl    #Habilitamos el módulo ssl.
 ```
 
 Después crearemos el certificado autofirmado:
 
-```
-sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private amn-used.key -out /etc/ssl/certs/amn-used.crt
+```bash
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/amn-used.key -out /etc/ssl/certs/amn-used.crt
+
+#Creamos un certificado autofirmado y almacenamos la clave privada en "/etc/ssl/private" y el certificado en "/etc/ssl/certs".
 ```
 
 Comprobamos que se ha creado correctamente con:
 
-```
-sudo ls /etc/ssl/certs | grep amn-used
+```bash
+sudo ls /etc/ssl/certs | grep amn-used    #Comprobamos que el certificado se ha creado correctamente.
 
-sudo ls /etc/ssl/private | grep amn-used
+sudo ls /etc/ssl/private | grep amn-used    #Comprobamos que la clave privada se ha creado correctamente.
 ```
 Reiniciamos el servicio de apache:
 
-```
+```bash
 sudo systemctl restart apache2
 ```
 
-Nos dirigiremos al directorio "/etc/apache2/sistes-available" y haremos una copia del fichero "default-ssl.conf"
+Nos dirigiremos al directorio "/etc/apache2/sites-available" y haremos una copia del fichero "default-ssl.conf"
 
-```
+```bash
 sudo cp default-ssl.conf amn-used.conf
 ```
 
@@ -235,19 +238,19 @@ Dentro de la copia cambiaremos el nombre del certificado y de la clave por los q
 
 Después activaremos el nuevo sitio:
 
-```
+```bash
 sudo a2ensite amn-used.conf
 ```
 
 Reiniciamos el servicio de apache:
 
-```
+```bash
 sudo systemctl restart apache2
 ```
 
 Y por último habilitaremos el puerto 443 en el cortafuegos:
 
-```
+```bash
 sudo ufw allow 443
 ```
 
@@ -274,7 +277,7 @@ A continuación en el fichero ".htaccess" del raíz de publicación podremos las
 
 ![alt text](images/htaccessRedireccion.PNG)
 
-Y al finalizar reiniciaremos de nuevo apache y podremos comprobar que al acceder a la URL mediante http el servidor redirecciona automaticamente a https.
+Y al finalizar reiniciaremos de nuevo apache y podremos comprobar que al acceder a la URL mediante http el servidor redirecciona automáticamente a https.
 
 ##### **Virtual Hosts**
 Vamos a configurar un sitio virtual llamado "sitio1.albertomennun.ieslossauces.es".
@@ -308,13 +311,13 @@ A continuación nos dirigiremos al directorio "/var/www/usuarioEnjaulado1" y cre
 ![alt text](images/SITIOS/5.PNG)
 
 
-Después comprobaremos los permisos de la carpeta error y modificaremos su propietario para que sea "usuarioEnjaulado1" y al grupo "www-data". También cambiaremoslos permisos de la carpeta a 775.
+Después comprobaremos los permisos de la carpeta error y modificaremos su propietario para que sea "usuarioEnjaulado1" y al grupo "www-data". También cambiaremos los permisos de la carpeta a 775.
 ![alt text](images/SITIOS/6.PNG)
 
 Luego deberemos de habilitar el sitio y reiniciar el servicio apache.
 ![alt text](images/SITIOS/7.PNG)
 
-A continuación nos conectaremos mediante SFTP con el usuario usuarioEnjaulado1 y en la carpeta htdocs pegaremos la aplicacion que queremos subir.
+A continuación nos conectaremos mediante SFTP con el usuario usuarioEnjaulado1 y en la carpeta htdocs pegaremos la aplicación que queremos subir.
 ![alt text](images/SITIOS/8.1.PNG)
 
 Después modificaremos el archivo ".htaccess" y indicaremos el "DirectoryIndex" que en este caso es "indexProyectoTema4.php".
@@ -390,14 +393,14 @@ Comprobaremos la version de mariadb con:
 ```
     sudo mariadb --version
 ```
-Entraremos en el fichero de configuracion de mariaDB y cambiaremos el apartado "bind-address" por "0.0.0.0":
+Entraremos en el fichero de configuración de mariaDB y cambiaremos el apartado "bind-address" por "0.0.0.0":
     sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
 ![alt text](images/confMariadb.png)
 
 Comprobamos el puerto por defecto que utiliza mariaDB (3306):
 ![alt text](images/puertoMariadb.png)
 
-A continuacion deberemos de crear un usuario "adminsql" de contraseña "paso".
+A continuación deberemos de crear un usuario "adminsql" de contraseña "paso".
 Para ello entraremos en la consola de MariaDB con "sudo mariadb" y los siguientes comandos:
 
 Creación del usuario:
@@ -413,7 +416,7 @@ Mysql tiene un modo de instalación seguro para evitar brechas de seguridad, lo 
 
 ![alt text](images/mysqlSi2.png)
 
-Una de las preguntas ha sido si queriamos que el usuario "root" tubiera contraseña, lo comprobamos con el siguiente comando:
+Una de las preguntas ha sido si queríamos que el usuario "root" tuviera contraseña, lo comprobamos con el siguiente comando:
 ![alt text](images/compRoot.png)
 
 
@@ -460,7 +463,7 @@ Para ejecutar un script deberemos de hacer click derecho en la conexión y entra
 
 Vamos a enjaular el usuario "usuarioEnjaulado1" en el directorio "/var/www/usuarioEnjaulado1".
 
-Para ello, en primer lugar, deberemos de crear ungrupo en el que vamos a meter los usuarios que queramos enjaular:
+Para ello, en primer lugar, deberemos de crear un grupo en el que vamos a meter los usuarios que queramos enjaular:
 ```
   sudo addgroup sftpusers
 ```
@@ -504,6 +507,9 @@ Por ultimo nos conectaremos mediante sftp y el usuario "usuarioEnjaulado1" y com
 ##### **Cuentas administradoras**
 #### 1.2.2 **Navegadores**
 #### 1.2.3 **MobaXterm**
+
+Vamos a utilizar
+
 #### 1.2.4 **Netbeans**
 
 ##### **Creación de proyectos**
@@ -535,16 +541,16 @@ Y comprobaremos que cuando cambiamos algo en NetBeans se ejecutan los cambios en
 En primer lugar deberemos de dirigirnos a nuestro repositorio de GitHub y copiaremos la URL del repositorio clicando en "<> Code" y en el apartado HTTPS.
 ![alt text](images/11.png)
 
-En NetBeans en el apartado "Team" deberemos de clicar en la opcion de "Git" y en la opción "Clonar..."
+En NetBeans en el apartado "Team" deberemos de clicar en la opción de "Git" y en la opción "Clonar..."
 ![alt text](images/12.png)
 
-Pegaremos la URL de nuestro repositorio y indicaremos el usuario y la contraseña de la cuenta de GitHub. Tmbién deberemos de indicar la carpeta de destino.
+Pegaremos la URL de nuestro repositorio y indicaremos el usuario y la contraseña de la cuenta de GitHub. También deberemos de indicar la carpeta de destino.
 ![alt text](images/13.png)
 
-Podremos a su vez indicar que ramas queremos de las que tiene el repositorio. (Si tubiera más aparecerían aquí).
+Podremos a su vez indicar que ramas queremos de las que tiene el repositorio. (Si tuviera más aparecerían aquí).
 ![alt text](images/14.png)
 
-Indicaremos el directorio padre y el nombre de la clonacion.
+Indicaremos el directorio padre y el nombre de la clonación.
 ![alt text](images/15.png)
 
 Al finalizar nos dirá si queremos crear un proyecto a partir del repositorio.
@@ -585,7 +591,7 @@ Nos conectaremos a nuestro panel de control mediante la url: https://ieslossauce
 
 ![alt text](images/entornoExplotacion/1.PNG)
 
-Aqui podremos administrar cualquier aspecto de nuestra pagina
+Aquí podremos administrar cualquier aspecto de nuestra pagina
 
 ![alt text](images/entornoExplotacion/2.PNG)
 
