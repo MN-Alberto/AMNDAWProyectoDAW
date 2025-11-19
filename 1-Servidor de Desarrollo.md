@@ -328,6 +328,42 @@ Y por ultimo comprobamos que accediendo en el navegador a "sitio1.albertomennun.
 
 ![alt text](images/SITIOS/9.PNG)
 
+###### **Varios sitios HTTPS**
+A continuación vamos a hacer que podamos tener varios sitios HTTPS en nuestro servidor web.
+
+
+En primer lugar crearemos un certificado autofirmado, y le daremos nombre a la clave privbada y al certificado:
+
+![alt text](images/variosSitiosHTTPS/1.PNG)
+
+En la información que tenemos que introducir al crear el certificado, en el apartado de "Common Name" deberemos de introducir el nombre que va a tener nuestro sitio, en este caso "sitio1.albertomennun.ieslossauces.es"
+
+![alt text](images/variosSitiosHTTPS/2.PNG)
+
+A continuación nos dirigiremos al directorio "/etc/apache2/sites-available" y haremos una copia del archivo "default-ssl.conf" y la llamaremos "sitio1-ssl.conf"
+
+![alt text](images/variosSitiosHTTPS/3.PNG)
+
+Lo editaremos, y deberemos de introduicir un "ServerName" y un "DocumentRoot".
+También deberemos editar los "ErrorLog" poniendo un nombre de archivo diferente al por defecto para en caso de algun error en nuestra página poder identificar facilmente el archivo log.ç
+Importante también cambiar el certificado y la clave como se ve en la parte inferior de la captura.
+
+![alt text](images/variosSitiosHTTPS/4.PNG)
+
+Guardaremos el archivo y activaremos el sitio que acabamos de configurar y reiniciaremos el servicio apache.
+
+![alt text](images/variosSitiosHTTPS/5.PNG)
+
+Al hacer esto ya funcionaria nuestro sitio HTTPS, como ejemplo he subido una release de el proyecto tema 4 de DWES de Gonzalo y como se ve en la captura funciona correctamente.
+
+![alt text](images/variosSitiosHTTPS/6.PNG)
+
+Funciona como esperabamos pero vamos a redireccionar HTTP a HTTPS para que siempre que accedamos accedamos con HTTPS.
+Para ello en el archivo ".htacces" del proyectoTema4 de gonzalo que hemos subido a nuestro sitio, deberemos de indicar el "DirectoryIndex" (indice de nuestra página) y añadiremos las líneas que corresponden al módulo "Rewrite" para hacer la redirección de HTTP a HTTPS.
+Importante en la línea "RewriteRule" indicar la URL con HTTPS ya que es a la URL a la que se va a redireccionar.
+
+![alt text](images/variosSitiosHTTPS/7.PNG)
+
 ##### **Permisos y usuarios**
 Creamos una cuenta para la publicación de contenidos en nuestra web:
   ```
@@ -500,105 +536,28 @@ Por ultimo nos conectaremos mediante sftp y el usuario "usuarioEnjaulado1" y com
 
 #### **1.1.8 Apache Tomcat**
 #### **1.1.9 LDAP**
+#### **2.0.0 PHPMyAdmin**
+Vamos a instalar "phpmyadmin" en nuestro servidor web.
+En primer lugar crearemos un archivo "listarmodulos.txt" en el que almacenaremos el resultado de el comando "php -m", que muestra todos los módulos instalados referentes a PHP. Hacemos esto para al finalizar la instalación de "phpmyadmin" comprobar los módulos adicionales de PHP que se han instalado.
 
-### **1.2 Windows 11**
-#### **1.2.1 **Configuración inicial**
-##### **Nombre y configuración de red**
-##### **Cuentas administradoras**
-#### 1.2.2 **Navegadores**
-#### 1.2.3 **MobaXterm**
+![alt text](images/phpMyadmin/1.PNG)
 
-Vamos a utilizar
+Instalamos "phpmyadmin"
 
-#### 1.2.4 **Netbeans**
+![alt text](images/phpMyadmin/2.PNG)
 
-##### **Creación de proyectos**
+A continuación deberemos de elejir la opción "apache2" para que phpmyadmin se configure automaticamente para apache2, seleccionaremos con la barra espaciadora y continuaremos.
 
-Para crear un proyecto en NetBeans deberemos de clicar en "File/New Project".
+![alt text](images/phpMyadmin/3.PNG)
 
-![alt text](images/1.png)
+Elejiremos la opción "yes" para configurar la base de datos de "phpmyadmin".
 
-Después clicaremos en la categoría de "PHP" y el tipo "PHP Application from Remote Server".
-![alt text](images/2.png)
+![alt text](images/phpMyadmin/4.PNG)
 
-Le daremos un nombre a nuestro proyecto y indicaremos la URL en la que se almacenará el proyecto.
-![alt text](images/3.png)
+Le pondremos una contraseña a MySQL.
 
-Indicaremos también la URL con la que buscaremos la página en el navegador (IP dek servidor) y el directorio de publicación.
-![alt text](images/4.png)
+![alt text](images/phpMyadmin/5.PNG)
 
-Mediante SFTP crearemos un archivo "index.html" dentro del directorio de publicación.
-![alt text](images/5.png)
+Y por último antes de comprobar haremos un nuevo archivo en el que listaremos los módulos de php de nuevo para comprobar los nuevos que se han instalado.
 
-Confirmaremos los archivos que queramos sincronizar.
-![alt text](images/6.png)
-
-Y comprobaremos que cuando cambiamos algo en NetBeans se ejecutan los cambios en la web del servidor.
-![alt text](images/7.png)
-
-##### **Configuración de Git en NetBeans**
-
-En primer lugar deberemos de dirigirnos a nuestro repositorio de GitHub y copiaremos la URL del repositorio clicando en "<> Code" y en el apartado HTTPS.
-![alt text](images/11.png)
-
-En NetBeans en el apartado "Team" deberemos de clicar en la opción de "Git" y en la opción "Clonar..."
-![alt text](images/12.png)
-
-Pegaremos la URL de nuestro repositorio y indicaremos el usuario y la contraseña de la cuenta de GitHub. También deberemos de indicar la carpeta de destino.
-![alt text](images/13.png)
-
-Podremos a su vez indicar que ramas queremos de las que tiene el repositorio. (Si tuviera más aparecerían aquí).
-![alt text](images/14.png)
-
-Indicaremos el directorio padre y el nombre de la clonación.
-![alt text](images/15.png)
-
-Al finalizar nos dirá si queremos crear un proyecto a partir del repositorio.
-
-![alt text](images/16.png)
-
-Indicaremos el tipo de proyecto.
-![alt text](images/17.png)
-
-Le pondremos un nombre y le indicaremos un directorio.
-![alt text](images/18.png)
-
-Indicaremos la URL del servidor y su directorio de publicación.
-![alt text](images/19.png)
-
-Confirmaremos los archivos.
-![alt text](images/20.png)
-
-Y como podemos ver en el Repository Browser tenemos toda la información sobre la clonación.
-![alt text](images/21.png)
-
-Al hacer clic derecho en "Source Files" de nuestro proyecto, en el apartado de "Git" podremos administrar todo, por ejemplo hacer un commit, merge etc.
-![alt text](images/22.png)
-
-#### 1.2.5 **Visual Studio Code**
-
-## 2. **GitHub**
-
-Utilizaremos GitHub para subir nuestros proyectos y versionarlos poco a poco.
-En cada proyecto tendremos una rama developer y una rama master.
-
-
-
-## 3. **Entorno de Explotación**
-
-Nuestra aplicación web estará alojada en Plesk.
-Nos conectaremos a nuestro panel de control mediante la url: https://ieslossauces.es:8443/login_up.php
-
-![alt text](images/entornoExplotacion/1.PNG)
-
-Aquí podremos administrar cualquier aspecto de nuestra pagina
-
-![alt text](images/entornoExplotacion/2.PNG)
-
----
-
-> **Nombre y Apellidos**  
-> Alberto Méndez Núñez
-> Curso: 2025/2026  
-> 2º Curso CFGS Desarrollo de Aplicaciones Web  
-> Despliegue de aplicaciones web
+![alt text](images/phpMyadmin/6.PNG)
