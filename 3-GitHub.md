@@ -1,13 +1,13 @@
-## 2. **GitHub**
+# 2. **GitHub**
 
 Utilizaremos GitHub para subir nuestros proyectos y versionarlos poco a poco.
 En cada proyecto tendremos una rama developer y una rama master.
 
-### 2.1. Ramas principales
+## 2.1. Ramas principales
 - **master**: Rama estable, lista para producción.
 - **developerAMN**: Rama de desarrollo, donde se integran nuevas funcionalidades y cambios antes de pasarlos a `master`.
 
-### 2.2. Crear un repositorio
+## 2.2. Crear un repositorio
 1. Entraremos a [GitHub](https://github.com/) y en nuestros repositorios, haremos click en **New repository**.
 ![alt text](usoGitHub/1.png)
 2. Le daremos un nombre a nuestro repositorio y, opcionalmente, una descripción.
@@ -19,7 +19,7 @@ En cada proyecto tendremos una rama developer y una rama master.
 5. Haz click en **Create repository** y ya se crearía nuestro repositorio.
 ![alt text](usoGitHub/5.png)
 
-### 2.3. Crear y gestionar ramas
+## 2.3. Crear y gestionar ramas
 
 Vamos a crear la rama ``developerAMN`.
 Para ello, deberemos de clicar en el desplegable de las ramas, y clicaremos en "View all branches"
@@ -42,7 +42,7 @@ Para cambiarnos de rama deberemos de clicar de nuevo en el desplegable y selecci
 ![alt text](usoGitHub/10.png)
 
 
-### 2.4. Commit y merge con la rama Master
+## 2.4. Commit y merge con la rama Master
 
 Vamos a realizar nuestro primer commit a nuestra rama developerAMN para después hacer un merge con la rama master.
 
@@ -73,3 +73,31 @@ Nos pedirá un titulo y una descripción.
 Al confirmar el merge, ambas ramas se fusionarán y tendran el archivo que hemos subido en nuestro primer commit.
 
 ![alt text](usoGitHub/17.png)
+
+## 2.5 Creación de Tags y Releases
+
+Vamos a crear una release de nuestro proyecto de ejemplo.
+
+Para ello deveremos de clicar en "Create a new release" en nuestro repositorio.
+
+![alt text](usoGitHub/18.png)
+
+Después, como no tenemos nigun Tag creado, deberemos de crear uno. Para ello deberemos de clicar en "Select tag".
+
+![alt text](usoGitHub/19.png)
+
+Clicaremos en "Create new tag" para crear un Tag nuevo.
+
+![alt text](usoGitHub/20.png)
+
+Aquí podremos ponerle un nombre a nuestro primer tag, nosotros vamos a llamarlo "v1.0.0" ya que va a ser nuestra primera versión funcional del repositorio.
+
+![alt text](usoGitHub/21.png)
+
+Al haberla creado, la seleccionaremos, le pondremos un titulo a nuestra release, en este caso el mismo que el tag, y también podremos indicar una descripción de lo que contiene. También podemos elejir a que rama queremos que se publique nuestra release.
+
+![alt text](usoGitHub/22.png)
+
+Después de crearla, ya podriamos descargar el código/archivos de nuestro repositorio en el momento de hacer la release.
+
+![alt text](usoGitHub/23.png)
