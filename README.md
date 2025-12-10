@@ -9,7 +9,7 @@
 - [1. Servidor de Desarrollo](1-ServidordeDesarrollo.md)
 - [2. Cliente de Desarrollo](2-ClientedeDesarrollo.md)
 - [3. GitHub](3-GitHub.md)
-- [4. Entorno de Explotación](4-EntornodeExplotacion.md)
+- [4. Entorno de Explotación](4-EntornodeExplotación.md)
 ---
 
 > **Alberto Méndez Núñez**  
