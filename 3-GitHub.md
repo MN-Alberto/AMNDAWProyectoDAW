@@ -101,3 +101,41 @@ Al haberla creado, la seleccionaremos, le pondremos un titulo a nuestra release,
 Después de crearla, ya podriamos descargar el código/archivos de nuestro repositorio en el momento de hacer la release.
 
 ![alt text](usoGitHub/23.png)
+
+## 2.6 Clave SSH GitHub
+
+En primer lugar deberemos de generar la clave pública y la clave privada, lo haremos con ssh-keygen. A su vez indicaremos una frase de paso para conectarnos posteriormente.
+
+![alt text](images/gitSSHAuth/1.PNG)
+
+Las claves se guardan en el fichero .ssh en la carpeta de nuestro usuario.
+
+![alt text](images/gitSSHAuth/2.PNG)
+
+Deberemos de copiar el contenido del archivo que contiene la clave privada.
+
+![alt text](images/gitSSHAuth/3.PNG)
+
+A continuación en GitHub, deberemos de ir al apartado "SSH and GPG keys" ubicado en la configuración de nuestro perfil.
+
+![alt text](images/gitSSHAuth/4.PNG)
+
+Deberemos de crear una nueva llave SSH.
+
+![alt text](images/gitSSHAuth/5.PNG)
+
+Indicaremos un nombre y pegaremos el contenido del fichero que contenia nuestra clave privada.
+
+![alt text](images/gitSSHAuth/6.PNG)
+
+Añadiremos la clave al agente ssh.
+
+![alt text](images/gitSSHAuth/7.PNG)
+
+Después deberemos de copiar la url del apartado SSH en el proyecto que hayamos elegido.
+
+![alt text](images/gitSSHAuth/8.PNG)
+
+Comprobamos que funciona correctamente clonando el proyecto con la url copiada.
+
+![alt text](images/gitSSHAuth/9.PNG)
