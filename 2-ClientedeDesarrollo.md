@@ -4,9 +4,6 @@
 ##### **Cuentas administradoras**
 #### 1.2.2 **Navegadores**
 #### 1.2.3 **MobaXterm**
-
-Vamos a utilizar
-
 #### 1.2.4 **Netbeans**
 
 ##### **Creación de proyectos**
@@ -72,5 +69,75 @@ Y como podemos ver en el Repository Browser tenemos toda la información sobre l
 Al hacer clic derecho en "Source Files" de nuestro proyecto, en el apartado de "Git" podremos administrar todo, por ejemplo hacer un commit, merge etc.
 ![alt text](images/22.png)
 
-#### 1.2.5 **Visual Studio Code**
+#### 1.2.5 **phpDocumentor**
 
+### Requisitos mínimos
+
+Para poder utilizar phpDocumentor en el entorno de desarrollo es necesario cumplir los siguientes requisitos:
+
+### Sistema
+
+    Sistema Operativo: Ubuntu Server 20.04 LTS o superior
+
+    Acceso: Usuario con permisos de instalación (sudo)
+
+### Software:
+
+PHP: versión 8.1 o superior
+
+    Composer: versión 2.x
+
+Extensiones PHP requeridas:
+
+    php-cli
+    php-xml
+    php-mbstring
+    php-curl
+
+### Instalación de dependencias
+
+Actualizar el sistema e instalar PHP con las extensiones necesarias:
+
+```bash
+sudo apt update
+sudo apt install -y php php-cli php-xml php-mbstring php-curl unzip git
+```
+
+### Configuración de variables de entorno (nivel de cuenta)
+
+Para que el comando phpDocumentor esté disponible desde cualquier ubicación, es necesario añadir Composer al PATH del usuario.
+
+Editar el archivo .bashrc del usuario:
+```bash
+nano ~/.bashrc
+```
+
+Añadir la siguiente línea al final del archivo:
+```bash
+export PATH="$HOME/.config/composer/vendor/bin:$PATH"
+```
+
+Aplicar los cambios:
+```bash
+source ~/.bashrc
+```
+
+### Uso de phpDocumentor
+Desde la raíz del proyecto PHP:
+```bash
+phpDocumentor -d src -t docs
+```
+
+Donde:
+
+    src -> contiene el código fuente PHP
+
+    docs -> será el directorio donde se generará la documentación HTML
+
+### Observaciones
+
+    La instalación se realiza a nivel de cuenta, no del sistema completo.
+
+    Cada usuario del servidor deberá configurar su propio PATH.
+
+    Se recomienda mantener PHP y Composer actualizados para evitar incompatibilidades.

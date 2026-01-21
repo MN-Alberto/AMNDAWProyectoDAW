@@ -485,11 +485,22 @@ Para ejecutar un script deberemos de hacer click derecho en la conexión y entra
 
 #### **1.1.5 XDebug**
 
+
+
 ![alt text](images/xDebug/1.PNG)
+
+
 ![alt text](images/xDebug/2.PNG)
+
+
 ![alt text](images/xDebug/5.PNG)
+
+
 ![alt text](images/xDebug/3.PNG)
+
+
 ![alt text](images/xDebug/4.PNG)
+
 
 #### **1.1.6 DNS**
 #### **1.1.7 SFTP**
@@ -561,3 +572,39 @@ Le pondremos una contraseña a MySQL.
 Y por último antes de comprobar haremos un nuevo archivo en el que listaremos los módulos de php de nuevo para comprobar los nuevos que se han instalado.
 
 ![alt text](images/phpMyadmin/6.PNG)
+
+#### **2.0.1 PHPDocumentor**
+
+Antes de instalarlo, un requisito minimo indispensable es tener instalado PHP 8.1 o superior.
+
+### Comprobamos la versión con:
+```bash
+php -v
+```
+
+### Después deberemos de instalar composer:
+```bash
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+
+php composer-setup.php
+
+sudo mv composer.phar /usr/local/bin/composer
+
+composer --version
+```
+
+### Instalamos phpDocumentor globalmente
+```bash
+composer global require phpdocumentor/phpdocumentor
+```
+
+Añade Composer al PATH si no está ya:
+```bash
+echo 'export PATH="$HOME/.config/composer/vendor/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+Comprueba la instalación:
+```bash
+phpDocumentor --version
+```
