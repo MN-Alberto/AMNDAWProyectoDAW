@@ -608,3 +608,148 @@ Comprueba la instalación:
 ```bash
 phpDocumentor --version
 ```
+
+#### **2.0.2 Apache Tomcat**
+
+Vamos a instalar Apache Tomcat en nuestro equipo anfitrión. Para ello necesitamos unos requisitos mínimos:
+
+Tomcat necesita Java para funcionar:
+
+    Tomcat 10.x → Java 11 o superior
+
+    Tomcat 9.x → Java 8 o superior
+
+    Tomcat 8.5 → Java 7 o superior
+
+
+Tomcat es multiplataforma:
+
+    Windows
+
+    Linux
+
+    macOS
+
+    Unix
+
+(No requiere uno específico, solo que soporte Java)
+
+Memoria RAM
+
+    Mínimo: 512 MB
+
+    Recomendado: 1 GB o más (especialmente si ejecutas apps web)
+
+Espacio en disco
+
+    Mínimo: ~100 MB
+
+    Recomendado: más espacio según las aplicaciones que vayamos a desplegar
+
+Puertos
+
+    Puerto 8080 libre (por defecto)
+
+    Puerto 8005 (shutdown)
+
+    Puerto 8009 (AJP, opcional)
+
+Requisitos recomendados (para producción)
+
+    Java LTS (11 o 17)
+
+    2 GB de RAM o más
+
+    SSD
+
+    Configuración de variables de entorno y permisos adecuados
+
+###  INSTALACIÓN DE JAVA STANDARD EDITION DEVELOPMENT KIT (JDK) 
+
+#### 1. Iniciar sesión en Windows
+
+#### 2. Descargar Java SE Development Kit en https://adoptium.net/es/
+
+#### 3. Elige la versión 64 bits de instalación, y descargue el fichero
+
+#### 4. Instalar la versión JDK descargada.
+
+#### 5. Comprobar la versión con el comando java -version y javac -version
+
+```cmd
+C:\Users\alberto.mennun>java -version
+openjdk version "11.0.22" 2024-01-16 LTS
+OpenJDK Runtime Environment Microsoft-8909545 (build 11.0.22+7-LTS)
+OpenJDK 64-Bit Server VM Microsoft-8909545 (build 11.0.22+7-LTS, mixed mode, sharing)
+
+C:\Users\alberto.mennun>javac -version
+javac 11.0.22
+```
+
+#### 6. Comprobar las variables del sistema
+Deberemos de tener las variables "CLASSPATH" y "JAVA_HOME", la variable JAVA_HOME deberá contener la url donde tenemos almacenado el JDK.
+
+### INSTALACIÓN DE TOMCAT
+
+#### 1. Descarga Apache Tomcat en https://tomcat.apache.org/
+
+Descargaremos la versión que necesitemos en función de nuestro sistema operativo y las especificaciones de nuestro equipo.
+
+¿Qué versión de Java utilizar?
+
+    Java 11 o superior (ideal: Java 17 o 21)
+    Es la versión estable y recomendada hoy
+    Soporte a largo plazo
+    Ideal para proyectos nuevos y aprendizaje
+
+#### 2. Descargar el Core con extensión .zip
+
+#### 3. En el disco de datos, en una carpeta llamada software la descomprimiremos
+
+#### 4. A continuación, iremos a Apache Netbeans y añadiremos el Servidor Tomcat. En el menú Tools→ Server. En “Servers” hacemos clic en el botón derecho “Add Server Instance”
+
+![alt text](apacheTomcat/1.png)
+
+![alt text](apacheTomcat/2.png)
+
+Elegiremos la opción de Apache Tomcat
+
+![alt text](apacheTomcat/3.png)
+
+El "Server Location" será la ubicación de la carpeta en la que se encuentra nuestro Apache Tomcat. De usuario y contraseña utilizaremos "tomcat", NO ES RECOMENDABLE UTILIZAR ESTE USUARIO Y CONTRASEÑA EN EXPLOTACIÓN.
+
+![alt text](apacheTomcat/4.png)
+
+A continuación arrancaremos el servidor, en los servicios de NetBeans, en el apartado "Servers", haremos clic derecho en el que acabamos de crear y clicaremos en "Start".
+
+![alt text](apacheTomcat/5.png)
+
+Como vemos, al arrancarlo, podemos ver todas las páginas que tiene nuestro servidor.
+
+![alt text](apacheTomcat/6.png)
+
+Si en un navegador accedemos a la url http://localhost:8080 podremos acceder al panel de control de Apache Tomcat y así comprobar y monitorizar su funcionamiento.
+
+![alt text](apacheTomcat/7.png)
+
+Tenemos 3 apartados disponibles, pero solo podemos acceder a 1 de ellos libremente sin cambiar ningún rol. A apartado "Server Status".
+
+![alt text](apacheTomcat/8.png)
+
+Como vemos, si intentamos acceder a "Manager App" y "Host Manager", nos dará un error de acceso denegado:
+
+![alt text](apacheTomcat/13.png)
+
+Si queremos acceder a los apartados de "Manager App" y "Host Manager", deberemos de dirigirnos al archivo "tomcat-users.xml", que se ubica en la carpeta "/conf" dentro de la carpeta que contiene todos los archivos de Apache Tomcat. Cuando lo hayamos ubicado, deberemos editarlo:
+
+![alt text](apacheTomcat/9.png)
+
+Al editar el archivo, justamente al final de este, tendremos el usuario que creamos al añadir nuestro servidor Tomcat en NetBeans, "tomcat" de contraseña también "tomcat". Este usuario, viene con los roles "manager-script" y "admin" por defecto, pero si queremos acceder a los apartados de "Manager App" y "Host Manager", deberemos de añadirle los roles de "manager-gui" y "admin-gui".
+
+![alt text](apacheTomcat/10.png)
+
+Tras hacerlo podremos acceder libremente a dichos apartados:
+
+![alt text](apacheTomcat/11.png)
+
+![alt text](apacheTomcat/12.png)
