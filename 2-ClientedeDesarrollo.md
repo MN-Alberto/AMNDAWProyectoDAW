@@ -141,3 +141,60 @@ Donde:
     Cada usuario del servidor deberá configurar su propio PATH.
 
     Se recomienda mantener PHP y Composer actualizados para evitar incompatibilidades.
+
+
+
+### Apache Tomcat
+
+Vamos a desplegar un proyecto Maven/Web Aplication en nuestro servidor Apache Tomcat mediante NetBeans.
+
+IMPORTANTE: Tener el servidor Tomcat arrancado antes de proceder.
+
+En primer lugar clicaremos en "New Project" y seleccionaremos las opciones de "Java with Maven" y el tipo de proyecto será "Web Aplication".
+![alt text](apacheTomcat/proyectoTomcat/1.PNG)
+
+Indicaremos el nombre del proyecto y donde se va a encontrar, en este caso se llamará "AMNDAWProyectoTomcat" y se encuentra en "D:\ProyectosNetBeans". También cambiaremos el apartado "Version" a la 1.0, ya que es nuestra primera versión.
+![alt text](apacheTomcat/proyectoTomcat/2.PNG)
+
+A continuación indicaremos nuestro servidor, que en este caso será el servidor Tomcat que tenemos arrancado y la versión de Jakarta.
+![alt text](apacheTomcat/proyectoTomcat/3.PNG)
+
+Como podemos comprobar, se ha creado el proyecto correctamente.
+
+![alt text](apacheTomcat/proyectoTomcat/4.PNG)
+
+A continuación, vamos a crear un nuevo archivo de tipo "JSP"
+
+![alt text](apacheTomcat/proyectoTomcat/5.PNG)
+
+Lo llamaremos index, la localización será "Web pages" y utilizaremos la syntaxis estandar.
+
+![alt text](apacheTomcat/proyectoTomcat/6.PNG)
+
+También vamos a crear un "Servlet" .
+
+![alt text](apacheTomcat/proyectoTomcat/6.5.PNG)
+
+Lo llamaremos "login".
+
+![alt text](apacheTomcat/proyectoTomcat/7.PNG)
+
+Aquí podemos ver el Servlet del login.
+
+![alt text](apacheTomcat/proyectoTomcat/8.PNG)
+
+A continuación en las propiedades del proyecto, en el apartado "Run", comporbaremos que la configuración es la correcta.
+
+![alt text](apacheTomcat/proyectoTomcat/9.PNG)
+
+Después de hacer esto, si buscamos la URL "localhost:8080/AMNDAWProyectoTomcat/" podemos ver que aparece el mensaje "Hello World!"
+
+![alt text](apacheTomcat/proyectoTomcat/10.PNG)
+
+También si buscamos la URL "localhost:8080/AMNDAWProyectoTomcat/login" nos aparecerá la página del Servlet.
+
+![alt text](apacheTomcat/proyectoTomcat/12.PNG)
+
+Por último, si nos dirigimos al apartado "Servers" de NetBeans, podemos ver que se ha añadido el nuevo proyecto que acabamos de desplegar.
+
+![alt text](apacheTomcat/proyectoTomcat/11.PNG)
