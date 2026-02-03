@@ -1,4 +1,12 @@
-# 3. **Entorno de Explotación**
+## 📑 Índice
+
+- [1. Entorno de Explotación](#1-entorno-de-explotación)
+  - [1.1 Subir archivos a nuestro dominio](#11-subir-archivos-a-nuestro-dominio)
+  - [1.2 Creación de subdominios](#12-creación-de-subdominios)
+  - [1.3 Creación de la base de datos en Entorno de Explotación](#13-creación-de-la-base-de-datos-en-entorno-de-explotación)
+  - [1.4 Creación de certificado con Let's Encrypt](#14-creación-de-certificado-con-lets-encrypt)
+
+# 1. **Entorno de Explotación**
 
 Nuestra aplicación web estará alojada en Plesk.
 Nos conectaremos a nuestro panel de control mediante la url: https://ieslossauces.es:8443/login_up.php
@@ -9,7 +17,7 @@ Aquí podremos administrar cualquier aspecto de nuestra pagina
 
 ![alt text](images/entornoExplotacion/2.PNG)
 
-### 3.1 Subir archivos a nuestro dominio.
+### 1.1 Subir archivos a nuestro dominio.
 
 Para subir archivos a nuestro dominio, lo haremos mediante una conexión SFTP con MobaXterm.
 Para ello deberemos de hacer clic en el boton "Session" y elejir la opción "SFTP":
@@ -26,7 +34,7 @@ Al conectarnos, los archivos de nuestra página los subiremos en "/httpdocs":
 ![alt text](entornoExplotacionBD/mobaXterm/3.PNG)
 
 
-### 3.2 Creación de subominios.
+### 1.2 Creación de subominios.
 
 Vamos a crear un subdominio para nuestro proyecto "AMNDWESProyectoTema4", para posteriormente poder relacionar la base de datos con dicho subdominio.
 
@@ -44,7 +52,7 @@ Y como podemos comprobar ya tenemos el subdominio creado:
 
 ---
 
-### 3.3 Creación de la base de datos en Entorno de Explotación
+### 1.3 Creación de la base de datos en Entorno de Explotación
 
 Para crear una base de datos en explotación, primero deberemos de clicar en "Bases de datos" en el panel de configuración de nuestro dominio.
 
@@ -69,7 +77,7 @@ En la opción "Importar volcado", simplemente tendremos que subir el archivo con
 
 ---
 
-### 3.4 Creación de certificado con Let's Encrypt
+### 1.4 Creación de certificado con Let's Encrypt
 
 Vamos a generar un nuevo certificado con Let's Encrypt para nuestra web en explotación.
 

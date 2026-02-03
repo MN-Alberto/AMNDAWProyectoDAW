@@ -1,12 +1,19 @@
-### **1.2 Windows 11**
-#### **1.2.1 **Configuración inicial**
-##### **Nombre y configuración de red**
-##### **Cuentas administradoras**
-#### 1.2.2 **Navegadores**
-#### 1.2.3 **MobaXterm**
-#### 1.2.4 **Netbeans**
+## 📑 Índice
 
-##### **Creación de proyectos**
+- [1. Creación de proyectos](#1-creación-de-proyectos)
+- [2. Configuración de Git en NetBeans](#2-configuración-de-git-en-netbeans)
+- [3. Configuración de xDebug](#3-xdebug)
+- [4. phpDocumentor](#4-phpdocumentor)
+  - [4.1 Requisitos mínimos](#41-requisitos-mínimos)
+  - [4.2 Sistema](#42-sistema)
+  - [4.4 Instalación de dependencias](#44-instalación-de-dependencias)
+  - [4.5 Configuración de variables de entorno (nivel de cuenta)](#45-configuración-de-variables-de-entorno-nivel-de-cuenta)
+  - [4.6 Uso de phpDocumentor](#46-uso-de-phpdocumentor)
+  - [4.7 Observaciones](#47-observaciones)
+- [5. Apache Tomcat](#5-apache-tomcat)
+
+
+##### **1. Creación de proyectos**
 
 Para crear un proyecto en NetBeans deberemos de clicar en "File/New Project".
 
@@ -30,7 +37,7 @@ Confirmaremos los archivos que queramos sincronizar.
 Y comprobaremos que cuando cambiamos algo en NetBeans se ejecutan los cambios en la web del servidor.
 ![alt text](images/7.png)
 
-##### **Configuración de Git en NetBeans**
+##### **2. Configuración de Git en NetBeans**
 
 En primer lugar deberemos de dirigirnos a nuestro repositorio de GitHub y copiaremos la URL del repositorio clicando en "<> Code" y en el apartado HTTPS.
 ![alt text](images/11.png)
@@ -69,19 +76,25 @@ Y como podemos ver en el Repository Browser tenemos toda la información sobre l
 Al hacer clic derecho en "Source Files" de nuestro proyecto, en el apartado de "Git" podremos administrar todo, por ejemplo hacer un commit, merge etc.
 ![alt text](images/22.png)
 
-#### 1.2.5 **phpDocumentor**
+#### 3. **xDebug**
 
-### Requisitos mínimos
+En nuestro IDE, deberemos de dirigirnos a "Tools/Options/PHP/Debugging", y deberemos de comprobar que el puerto de debugg es el 9003.
+
+![alt text](images/xDebug/3.PNG)
+
+#### 4. **phpDocumentor**
+
+### 4.1 Requisitos mínimos
 
 Para poder utilizar phpDocumentor en el entorno de desarrollo es necesario cumplir los siguientes requisitos:
 
-### Sistema
+### 4.2 Sistema
 
     Sistema Operativo: Ubuntu Server 20.04 LTS o superior
 
     Acceso: Usuario con permisos de instalación (sudo)
 
-### Software:
+### 4.3 Software:
 
 PHP: versión 8.1 o superior
 
@@ -94,7 +107,7 @@ Extensiones PHP requeridas:
     php-mbstring
     php-curl
 
-### Instalación de dependencias
+### 4.4 Instalación de dependencias
 
 Actualizar el sistema e instalar PHP con las extensiones necesarias:
 
@@ -103,7 +116,7 @@ sudo apt update
 sudo apt install -y php php-cli php-xml php-mbstring php-curl unzip git
 ```
 
-### Configuración de variables de entorno (nivel de cuenta)
+### 4.5 Configuración de variables de entorno (nivel de cuenta)
 
 Para que el comando phpDocumentor esté disponible desde cualquier ubicación, es necesario añadir Composer al PATH del usuario.
 
@@ -122,7 +135,7 @@ Aplicar los cambios:
 source ~/.bashrc
 ```
 
-### Uso de phpDocumentor
+### 4.6 Uso de phpDocumentor
 Desde la raíz del proyecto PHP:
 ```bash
 phpDocumentor -d src -t docs
@@ -134,7 +147,7 @@ Donde:
 
     docs -> será el directorio donde se generará la documentación HTML
 
-### Observaciones
+### 4.7 Observaciones
 
     La instalación se realiza a nivel de cuenta, no del sistema completo.
 
@@ -144,7 +157,7 @@ Donde:
 
 
 
-### Apache Tomcat
+### 5. Apache Tomcat
 
 Vamos a desplegar un proyecto Maven/Web Aplication en nuestro servidor Apache Tomcat mediante NetBeans.
 

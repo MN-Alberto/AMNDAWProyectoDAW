@@ -1,54 +1,46 @@
 
-# CFGS Desarrollo de Aplicaciones Web
-
+## 📑 Índice
 
 - [CFGS Desarrollo de Aplicaciones Web](#cfgs-desarrollo-de-aplicaciones-web)
   - [1. Entorno de Desarrollo](#1-entorno-de-desarrollo)
-    - [1.1 Ubuntu Server 24.04.3 LTS](#11-ubuntu-server-24043-lts)
-      - [1.1.1 **Configuración inicial**](#111-configuración-inicial)
-        - [Nombre y configuración de red](#nombre-y-configuración-de-red)
-      - [Comandos de comprobación:](#comandos-de-comprobación)
-        - [**Actualizar el sistema**](#actualizar-el-sistema)
-        - [**Configuración fecha y hora**](#configuración-fecha-y-hora)
-        - [**Cuentas administradoras**](#cuentas-administradoras)
-        - [**Cuentas no administradoras**](#cuentas-no-administradoras)
-        - [**Comprobar cuentas:**](#comprobar-cuentas)
-        - [**Habilitar cortafuegos**](#habilitar-cortafuegos)
-      - [**1.1.2 Instalación del servidor web**](#112-instalación-del-servidor-web)
-        - [**Instalación**](#instalación)
-        - [**Verficación del servicio**](#verficación-del-servicio)
-        - [**Ficheros log**](#ficheros-log)
-        - [**Comprobación del servidor**](#comprobación-del-servidor)
-      - [**HTTP a HTTPS Server**](#http-a-https-server)
-      - [**Redirección de HTTP a HTTPS Server**](#redirección-de-http-a-https-server)
-        - [**Virtual Hosts**](#virtual-hosts)
-        - [**Permisos y usuarios**](#permisos-y-usuarios)
-      - [**1.1.3 PHP8.3-fpm**](#113-php83-fpm)
-        - [**Instalación**](#instalación-1)
-        - [**Verificación del servicio**](#verificación-del-servicio)
-        - [**Comprobación del servidor**](#comprobación-del-servidor-1)
-      - [**1.1.4 MariaDB**](#114-mariadb)
-      - [**Instalación**](#instalación-2)
-      - [**Módulos relacionados con PHP**](#módulos-relacionados-con-php)
-      - [**Comprobación desde NetBeans**](#comprobación-desde-netbeans)
-      - [**1.1.5 XDebug**](#115-xdebug)
-      - [**1.1.6 DNS**](#116-dns)
-      - [**1.1.7 SFTP**](#117-sftp)
-        - [**Enjaular un usuario**](#enjaular-un-usuario)
-      - [**1.1.8 Apache Tomcat**](#118-apache-tomcat)
-      - [**1.1.9 LDAP**](#119-ldap)
-    - [**1.2 Windows 11**](#12-windows-11)
-      - [\*\*1.2.1 **Configuración inicial**](#121-configuración-inicial)
-        - [**Nombre y configuración de red**](#nombre-y-configuración-de-red-1)
-        - [**Cuentas administradoras**](#cuentas-administradoras-1)
-      - [1.2.2 **Navegadores**](#122-navegadores)
-      - [1.2.3 **MobaXterm**](#123-mobaxterm)
-      - [1.2.4 **Netbeans**](#124-netbeans)
-        - [**Creación de proyectos**](#creación-de-proyectos)
-        - [**Configuración de Git en NetBeans**](#configuración-de-git-en-netbeans)
-      - [1.2.5 **Visual Studio Code**](#125-visual-studio-code)
-  - [2. **GitHub**](#2-github)
-  - [3. **Entorno de Explotación**](#3-entorno-de-explotación)
+  - [1.1 Ubuntu Server 24.04.3 LTS](#11-ubuntu-server-240043-lts)
+    - [1.1.1 Configuración inicial](#111-configuración-inicial)
+      - [Nombre y configuración de red](#nombre-y-configuración-de-red)
+    - [Comandos de comprobación](#comandos-de-comprobación)
+      - [Configuración fecha y hora](#configuración-fecha-y-hora)
+      - [Cuentas administradoras](#cuentas-administradoras)
+      - [Cuentas no administradoras](#cuentas-no-administradoras)
+      - [Comprobar cuentas](#comprobar-cuentas)
+      - [Habilitar cortafuegos](#habilitar-cortafuegos)
+    - [1.1.2 Instalación del servidor web](#112-instalación-del-servidor-web)
+      - [Instalación](#instalación)
+      - [Verificación del servicio](#verificación-del-servicio)
+      - [Ficheros log](#ficheros-log)
+      - [Comprobación del servidor](#comprobación-del-servidor)
+    - [HTTP a HTTPS Server](#http-a-https-server)
+    - [Redirección de HTTP a HTTPS Server](#redirección-de-http-a-https-server)
+      - [Virtual Hosts](#virtual-hosts)
+        - [Varios sitios HTTPS](#varios-sitios-https)
+      - [Permisos y usuarios](#permisos-y-usuarios)
+    - [1.1.3 PHP8.3-fpm](#113-php83-fpm)
+      - [Instalación](#instalación-1)
+      - [Verificación del servicio](#verificación-del-servicio-1)
+      - [Comprobación del servidor](#comprobación-del-servidor-1)
+    - [1.1.4 MariaDB](#114-mariadb)
+      - [Instalación](#instalación-2)
+      - [Módulos relacionados con PHP](#módulos-relacionados-con-php)
+      - [Comprobación desde NetBeans](#comprobación-desde-netbeans)
+    - [1.1.5 XDebug](#115-xdebug)
+    - [1.1.6 DNS](#116-dns)
+    - [1.1.7 SFTP](#117-sftp)
+      - [Enjaular un usuario](#enjaular-un-usuario)
+    - [1.1.8 Apache Tomcat](#118-apache-tomcat)
+    - [1.1.9 LDAP](#119-ldap)
+  - [2.0.0 PHPMyAdmin](#200-phpmyadmin)
+  - [2.0.1 PHPDocumentor](#201-phpdocumentor)
+  - [2.0.2 Apache Tomcat](#202-apache-tomcat)
+    - [2.0.3 Instalación de Java Standard Edition Development Kit (JDK)](#instalación-de-java-standard-edition-development-kit-jdk)
+    - [2.0.4 Instalación de Tomcat](#instalación-de-tomcat)
 
 |  DAW/DWES Tema2 |
 |:-----------:|
@@ -485,21 +477,22 @@ Para ejecutar un script deberemos de hacer click derecho en la conexión y entra
 
 #### **1.1.5 XDebug**
 
+Vamos a instalar XDebug para poder utilizarlo en nuestro IDE.
 
-
+Para ello, en primer lugar deberemos de instalarlo con el comando:
+```bash
+  sudo apt install php8.3-xdebug
+```
 ![alt text](images/xDebug/1.PNG)
 
-
+A continuación hacemos "ls" dentro de "/etc/php/8.3/apache2/conf.d" para comporbar que xdebug se ha instalado correctamente.
 ![alt text](images/xDebug/2.PNG)
 
+En el archivo de configuración de xdebug, deberemos de poner las siguientes lineas:
 
 ![alt text](images/xDebug/5.PNG)
 
-
-![alt text](images/xDebug/3.PNG)
-
-
-![alt text](images/xDebug/4.PNG)
+Y a continuación deberemos de seguir en el Cliente de Desarrollo.
 
 
 #### **1.1.6 DNS**
