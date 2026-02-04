@@ -5,6 +5,8 @@
   - [1.2 Creación de subdominios](#12-creación-de-subdominios)
   - [1.3 Creación de la base de datos en Entorno de Explotación](#13-creación-de-la-base-de-datos-en-entorno-de-explotación)
   - [1.4 Creación de certificado con Let's Encrypt](#14-creación-de-certificado-con-lets-encrypt)
+  - [1.5 Sitio Virtual](#15-sitio-virtual)
+
 
 # 1. **Entorno de Explotación**
 
@@ -123,6 +125,25 @@ Como vemos la emisión del certidficado está en curso
 Si copiamos el nombre de dominio y en un terminal hacemos nslookup al nombre, podemos ver la respuesta.
 
 ![alt text](certificadoEE/11.PNG)
+
+
+### 1.5 Sitio Virtual
+
+Vamos a configurar un sitio virtual llamado "sitio1.albertomennun.ieslossauces.es".
+
+Para ello en primer lugar, deberemos de acceder al panel de configuración de nuestro hosting, y clicaremos en el apartado "Hosting y DNS" y en la opción "DNS"
+![alt text](images/SITIOS/0.1.PNG)
+
+A continuación clicaremos en "+ Añadir registro"
+![alt text](images/SITIOS/0.2.PNG)
+
+Después le podremos indicar el tipo de registro, el nombre de dominio, el TTL (Time To Life) y la dirección IP de nuestro servidor.
+![alt text](images/SITIOS/0.3.PNG)
+
+Como podemos comprobar se ha creado correctamente.
+![alt text](images/SITIOS/0.4.PNG)
+
+La continuación se realizará en el apartado "1.1.2.7 Virtual Hosts" de la documentación del servidor de desarrollo.
 
 > **Nombre y Apellidos**  
 > Alberto Méndez Núñez

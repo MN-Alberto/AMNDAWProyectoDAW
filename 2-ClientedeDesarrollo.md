@@ -11,6 +11,8 @@
   - [4.6 Uso de phpDocumentor](#46-uso-de-phpdocumentor)
   - [4.7 Observaciones](#47-observaciones)
 - [5. Apache Tomcat](#5-apache-tomcat)
+- [6. Comprobación de servidor HTTP](#6-comprobación-de-servidor-http)
+- [7. Comprobación de servidor HTTPS](#7-comprobación-de-servidor-https)
 
 
 ##### **1. Creación de proyectos**
@@ -211,3 +213,12 @@ También si buscamos la URL "localhost:8080/AMNDAWProyectoTomcat/login" nos apar
 Por último, si nos dirigimos al apartado "Servers" de NetBeans, podemos ver que se ha añadido el nuevo proyecto que acabamos de desplegar.
 
 ![alt text](apacheTomcat/proyectoTomcat/11.PNG)
+
+
+### 6. Comprobación de servidor HTTP
+
+  ![alt text](images/8.PNG)
+
+### 7. Comprobación de servidor HTTPS
+
+  ![alt text](images/certPrueba.PNG)
