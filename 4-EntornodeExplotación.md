@@ -6,6 +6,7 @@
   - [1.3 Creación de la base de datos en Entorno de Explotación](#13-creación-de-la-base-de-datos-en-entorno-de-explotación)
   - [1.4 Creación de certificado con Let's Encrypt](#14-creación-de-certificado-con-lets-encrypt)
   - [1.5 Sitio Virtual](#15-sitio-virtual)
+- [2. Despliegue utilizando Git](#2-despliegue-utilizando-git)
 
 
 # 1. **Entorno de Explotación**
