@@ -145,6 +145,54 @@ Como podemos comprobar se ha creado correctamente.
 
 La continuación se realizará en el apartado "1.1.2.7 Virtual Hosts" de la documentación del servidor de desarrollo.
 
+
+# 2. **Despliegue utilizando Git**
+
+En este caso, vamos a desplegar nuestra aplicación final de DWES en nuestro entorno de explotación utilizando una release de GitHub.
+
+Previamente, hemos estado realizando commits y merges en nuestro repositorio AMNDWESAplicacionFinal, para poder desplegarlo en explotación, en primer lugar nos dirigiremos a GitHub, y crearemos una nueva release.
+
+Para ello, deberemos de irnos al apartado de "Releases" y clicar en "Draft a new release".
+![alt text](despliegue/1.jpg)
+
+Aquí, deberemos de seleccionar un "tag" para nuestra release, en este caso vamos a crear uno nuevo.
+
+![alt text](despliegue/2.jpg)
+
+Lo vamos a llamar v16.0.0, ya que es la versión número 16 de la aplicación.
+
+![alt text](despliegue/3.jpg)
+
+A su vez, también debemos especificar un titulo y una descripción para la release. De titulo pondremos el número de la versión, y de descripción pondremos los cambios que se han realizado desde la última versión.
+
+![alt text](despliegue/4.jpg)
+
+Tras publicar la release, deberemos de descargar el archivo .zip y descomprimirlo.
+
+![alt text](despliegue/5.jpg)
+
+En nuestro caso, como la aplicación viene directamente del entorno de desarrollo, deberemos de cambiar la configuración de conexión a la base de datos por la del entorno de explotación.
+
+![alt text](despliegue/6.jpg)
+
+Después, nos dirigiremos a MobaXterm y crearemos una nueva sesión SFTP.
+El "Remote Host" será la URL de nuestra web de explotación, "albertomennun.ieslossauces.es", y el nombre de usuario "albertomennun".
+
+![alt text](despliegue/7.jpg)
+
+Al conectarnos, deberemos de dirigirnos a la carpeta "httpdocs", ya que es el directorio de publicación de nuestro usuario.
+
+![alt text](despliegue/8.jpg)
+
+Al acceder a httpdocs, nos dirigiremos a la carpeta de nuestra aplicación final, y simplemente subiremos los archivos de la release que descargamos y descomprimimos.
+
+![alt text](despliegue/9.jpg)
+
+Y como podemos comprobar, si accedemos a la URL correspondiente a nuestra aplicación final podremos visitar la página.
+
+![alt text](despliegue/10.jpg)
+
+
 > **Nombre y Apellidos**  
 > Alberto Méndez Núñez
 > Curso: 2025/2026  
