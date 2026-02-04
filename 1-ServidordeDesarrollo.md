@@ -3,44 +3,47 @@
 
 - [CFGS Desarrollo de Aplicaciones Web](#cfgs-desarrollo-de-aplicaciones-web)
   - [1. Entorno de Desarrollo](#1-entorno-de-desarrollo)
-  - [1.1 Ubuntu Server 24.04.3 LTS](#11-ubuntu-server-240043-lts)
-    - [1.1.1 Configuración inicial](#111-configuración-inicial)
-      - [Nombre y configuración de red](#nombre-y-configuración-de-red)
-    - [Comandos de comprobación](#comandos-de-comprobación)
-      - [Configuración fecha y hora](#configuración-fecha-y-hora)
-      - [Cuentas administradoras](#cuentas-administradoras)
-      - [Cuentas no administradoras](#cuentas-no-administradoras)
-      - [Comprobar cuentas](#comprobar-cuentas)
-      - [Habilitar cortafuegos](#habilitar-cortafuegos)
-    - [1.1.2 Instalación del servidor web](#112-instalación-del-servidor-web)
-      - [Instalación](#instalación)
-      - [Verificación del servicio](#verificación-del-servicio)
-      - [Ficheros log](#ficheros-log)
-      - [Comprobación del servidor](#comprobación-del-servidor)
-    - [HTTP a HTTPS Server](#http-a-https-server)
-    - [Redirección de HTTP a HTTPS Server](#redirección-de-http-a-https-server)
-      - [Virtual Hosts](#virtual-hosts)
-        - [Varios sitios HTTPS](#varios-sitios-https)
-      - [Permisos y usuarios](#permisos-y-usuarios)
-    - [1.1.3 PHP8.3-fpm](#113-php83-fpm)
-      - [Instalación](#instalación-1)
-      - [Verificación del servicio](#verificación-del-servicio-1)
-      - [Comprobación del servidor](#comprobación-del-servidor-1)
-    - [1.1.4 MariaDB](#114-mariadb)
-      - [Instalación](#instalación-2)
-      - [Módulos relacionados con PHP](#módulos-relacionados-con-php)
-      - [Comprobación desde NetBeans](#comprobación-desde-netbeans)
-    - [1.1.5 XDebug](#115-xdebug)
-    - [1.1.6 DNS](#116-dns)
-    - [1.1.7 SFTP](#117-sftp)
-      - [Enjaular un usuario](#enjaular-un-usuario)
-    - [1.1.8 Apache Tomcat](#118-apache-tomcat)
-    - [1.1.9 LDAP](#119-ldap)
-  - [2.0.0 PHPMyAdmin](#200-phpmyadmin)
-  - [2.0.1 PHPDocumentor](#201-phpdocumentor)
-  - [2.0.2 Apache Tomcat](#202-apache-tomcat)
-    - [2.0.3 Instalación de Java Standard Edition Development Kit (JDK)](#instalación-de-java-standard-edition-development-kit-jdk)
-    - [2.0.4 Instalación de Tomcat](#instalación-de-tomcat)
+    - [1.1 Ubuntu Server 24.04.3 LTS](#11-ubuntu-server-240043-lts)
+      - [1.1.1 Configuración inicial](#111-configuración-inicial)
+        - [1.1.1.1 Nombre y configuración de red](#1111-nombre-y-configuración-de-red)
+        - [1.1.1.2 Comandos de comprobación](#1112-comandos-de-comprobación)
+        - [1.1.1.3 Actualizar el sistema](#1113-actualizar-el-sistema)
+        - [1.1.1.4 Configuración fecha y hora](#1114-configuración-fecha-y-hora)
+        - [1.1.1.5 Cuentas administradoras](#1115-cuentas-administradoras)
+        - [1.1.1.6 Cuentas no administradoras](#1116-cuentas-no-administradoras)
+        - [1.1.1.7 Comprobar cuentas](#1117-comprobar-cuentas)
+        - [1.1.1.8 Habilitar cortafuegos](#1118-habilitar-cortafuegos)
+      - [1.1.2 Instalación del servidor web](#112-instalación-del-servidor-web)
+        - [1.1.2.1 Instalación](#1121-instalación)
+        - [1.1.2.2 Verificación del servicio](#1122-verificación-del-servicio)
+        - [1.1.2.3 Ficheros log](#1123-ficheros-log)
+          - [Comprobar HTTP](2-ClienteDeDesarrollo.md#6-comprobación-de-servidor-http)
+        - [1.1.2.4 HTTP a HTTPS Server](#1124-http-a-https-server)
+        - [1.1.2.5 Redirección de HTTP a HTTPS Server](#1125-redirección-de-http-a-https-server)
+          - [Comprobar HTTPS en el cliente](2-ClienteDeDesarrollo.md#7-comprobación-de-servidor-https)
+        - [1.1.2.6 Virtual Hosts](#1126-virtual-hosts)
+          - [Sitio Virtual en explotación](4-EntornoDeExplotación.md#15-sitio-virtual)
+        - [1.1.2.7 Varios sitios HTTPS](#1127-varios-sitios-https)
+        - [1.1.2.8 Permisos y usuarios](#1128-permisos-y-usuarios)
+      - [1.1.3 PHP8.3-fpm](#113-php83-fpm)
+        - [1.1.3.1 Instalación](#1131-instalación)
+        - [1.1.3.2 Verificación del servicio](#1132-verificación-del-servicio)
+        - [1.1.3.3 Comprobación del servidor](#1133-comprobación-del-servidor)
+      - [1.1.4 MariaDB](#114-mariadb)
+        - [1.1.4.1 Instalación](#1141-instalación)
+        - [1.1.4.2 Módulos relacionados con PHP](#1142-módulos-relacionados-con-php)
+        - [1.1.4.3 Comprobación desde NetBeans](#1143-comprobación-desde-netbeans)
+      - [1.1.5 XDebug](#115-xdebug)
+      - [1.1.6 DNS](#116-dns)
+      - [1.1.7 SFTP](#117-sftp)
+        - [1.1.7.1 Enjaular un usuario](#1171-enjaular-un-usuario)
+      - [1.1.8 Apache Tomcat](#118-apache-tomcat)
+      - [1.1.9 LDAP](#119-ldap)
+    - [2.0.0 PHPMyAdmin](#200-phpmyadmin)
+    - [2.0.1 PHPDocumentor](#201-phpdocumentor)
+    - [2.0.2 Apache Tomcat](#202-apache-tomcat)
+      - [2.0.2.1 Instalación de Java Standard Edition Development Kit (JDK)](#2021-instalación-de-java-standard-edition-development-kit-jdk)
+      - [2.0.2.2 Instalación de Tomcat](#2022-instalación-de-tomcat)
 
 |  DAW/DWES Tema2 |
 |:-----------:|
@@ -55,7 +58,7 @@ Este documento es una guía detallada del proceso de instalación y configuraci�
 
 #### 1.1.1 **Configuración inicial**
 
-##### Nombre y configuración de red
+##### 1.1.1.1 **Nombre y configuración de red**
 
 > **Nombre de la máquina**: daw-used\
 > **Memoria RAM**: 2G\
@@ -67,7 +70,7 @@ Este documento es una guía detallada del proceso de instalación y configuraci�
 >           10.151.126.21
 
 
-#### Comandos de comprobación:
+#### 1.1.1.2 Comandos de comprobación:
 > **Nombre de la máquina**: hostnamectl\
 > **Memoria RAM**: free -h\
 > **Particiones**: df -h\
@@ -101,7 +104,7 @@ Aplicamos la configuración de red con:
 sudo netplan apply  #Aplica la configuración de red.
 ````
 
-##### **Actualizar el sistema**
+##### 1.1.1.3 **Actualizar el sistema**
 
 ```bash
 sudo apt update     #Recopila las posibles actualizaciones del sistema.
@@ -110,7 +113,7 @@ sudo apt upgrade    #Instala las actualizaciones recopiladas.
 
 ---
 
-##### **Configuración fecha y hora**
+##### 1.1.1.4 **Configuración fecha y hora**
 
 [Establecer fecha, hora y zona horaria](https://somebooks.es/establecer-la-fecha-hora-y-zona-horaria-en-la-terminal-de-ubuntu-20-04-lts/ "Cambiar fecha y hora")
 ```bash
@@ -119,17 +122,17 @@ sudo timedatectl set-timezone Europe/Madrid   #Establece la fecha y hora a la zo
 
 ---
 
-##### **Cuentas administradoras**
+##### 1.1.1.5 **Cuentas administradoras**
 
 > - [X] root(inicio)
 > - [X] miadmin/paso
 > - [X] miadmin2/paso
 > - [X] adminsql/paso
 
-##### **Cuentas no administradoras**
+##### 1.1.1.6 **Cuentas no administradoras**
 > - [X] operadorweb/paso
 
-##### **Comprobar cuentas:**
+##### 1.1.1.7 **Comprobar cuentas:**
 ```bash
 cat /etc/passwd | grep nombreCuenta   #Muestra  las líneas del fichero "/etc/passwd" en las que aparezca el nombreCuenta que indicamos. 
 
@@ -142,7 +145,7 @@ sudo useradd -m -G [grupos,grupos] -s /bin/bash miadmin3    #Añade un nuevo usu
 
 ---
 
-##### **Habilitar cortafuegos**
+##### 1.1.1.8 **Habilitar cortafuegos**
 
 Como activar cortafuegos
 ```bash
@@ -167,26 +170,23 @@ sudo ufw delete [numeroRegla]   #Elimina el puerto al indicarle su número de re
 
 #### **1.1.2 Instalación del servidor web**
 
-##### **Instalación**
+##### **1.1.2.1 Instalación**
 ```bash
   sudo apt install apache2    #Instalamos el servicio apache.
 ```
-##### **Verficación del servicio**
+##### **1.1.2.2 Verficación del servicio**
 ```bash
   sudo service apache2 start    #Arrancamos el servicio apache.
   sudo systemctl status apache2   #Mostramos el estado del servicio.
   sudo ufw allow 80   #Habilitamos el puerto 80 en el cortafuegos ya que es el que utiliza por defecto para escuchar las peticiones del navegador del cliente.
 ```
-##### **Ficheros log**
+##### **1.1.2.3 Ficheros log**
 Los ficheros de log de apache se almacenan en "/var/log/apache2".
 
-##### **Comprobación del servidor**
+#### Comprobar HTTP
+La comprobación se puede ver en el apartado "Comprobación de servidor HTTP" en la documentación del cliente de desarrollo.
 
-  ![alt text](images/8.PNG)
-
----
-
-#### **HTTP a HTTPS Server**
+#### **1.1.2.4 HTTP a HTTPS Server**
 
 Así funciona HTTPS:
   ![alt text](images/imagenhttps.png)
@@ -246,11 +246,10 @@ Y por último habilitaremos el puerto 443 en el cortafuegos:
 sudo ufw allow 443
 ```
 
-Comprobamos:
+Comprobamos en el cliente de desarrollo, apartado "Comprobación de servidor HTTPS".
 
-![alt text](images/certPrueba.PNG)
 
-#### **Redirección de HTTP a HTTPS Server**
+#### **1.1.2.5 Redirección de HTTP a HTTPS Server**
 Para redireccionar apache HTTP a HTTPS deberemos de habilitar el módulo "rewrite" y editar el fichero ".htaccess" del directorio raíz de publicación y añadiremos las siguientes directivas.
 
 En primer lugar habilitaremos el módulo "rewrite":
@@ -269,58 +268,48 @@ A continuación en el fichero ".htaccess" del raíz de publicación podremos las
 
 ![alt text](images/htaccessRedireccion.PNG)
 
-Y al finalizar reiniciaremos de nuevo apache y podremos comprobar que al acceder a la URL mediante http el servidor redirecciona automáticamente a https.
+### Comprobar HTTPS en el cliente
 
-##### **Virtual Hosts**
-Vamos a configurar un sitio virtual llamado "sitio1.albertomennun.ieslossauces.es".
+Y al finalizar reiniciaremos de nuevo apache y podremos comprobar que al acceder a la URL mediante http el servidor redirecciona automáticamente a https. Está documentado en el cliente de desarrollo.
 
-Para ello en primer lugar, deberemos de acceder al panel de configuración de nuestro hosting, y clicaremos en el apartado "Hosting y DNS" y en la opción "DNS"
-![alt text](images/SITIOS/0.1.PNG)
-
-A continuación clicaremos en "+ Añadir registro"
-![alt text](images/SITIOS/0.2.PNG)
-
-Después le podremos indicar el tipo de registro, el nombre de dominio, el TTL (Time To Life) y la dirección IP de nuestro servidor.
-![alt text](images/SITIOS/0.3.PNG)
+##### **1.1.2.6 Virtual Hosts**
+### Ojo:
+Vamos a configurar nuestro sitio en nuestro servidor apache, previamente se han devido de realizar los cambios necesarios en el entorno de explotación. Antes de continuar visite el apartado de "Sitio virual" en la documentación del entorno de explotación.
+### Sitio Virtual en explotación
 
 
-Como podemos comprobar se ha creado correctamente.
-![alt text](images/SITIOS/0.4.PNG)
-
-
-Ahora vamos a configurar nuestro sitio en nuestro servidor apache.
 
 En primer lugar deberemos de ir al directorio "/etc/apache2/sites-available" y copiaremos el sitio "000-default.conf" con el nombre de nuestro sitio remplazando los puntos por guiones .conf "sitio1-albertomennun-ieslossauces-es.conf".
 
-![alt text](images/SITIOS/1.PNG)
+![alt text](images/SITIOS/1.png)
 
 
 Editaremos el fichero y añadiremos el "ServerName" y modificaremos el "DocumentRoot", el "ErrorLog" y el "ProxyPassMatch".
-![alt text](images/SITIOS/4.PNG)
+![alt text](images/SITIOS/4.png)
 
 
 A continuación nos dirigiremos al directorio "/var/www/usuarioEnjaulado1" y crearemos el directorio "error".
-![alt text](images/SITIOS/5.PNG)
+![alt text](images/SITIOS/5.png)
 
 
 Después comprobaremos los permisos de la carpeta error y modificaremos su propietario para que sea "usuarioEnjaulado1" y al grupo "www-data". También cambiaremos los permisos de la carpeta a 775.
-![alt text](images/SITIOS/6.PNG)
+![alt text](images/SITIOS/6.png)
 
 Luego deberemos de habilitar el sitio y reiniciar el servicio apache.
-![alt text](images/SITIOS/7.PNG)
+![alt text](images/SITIOS/7.png)
 
 A continuación nos conectaremos mediante SFTP con el usuario usuarioEnjaulado1 y en la carpeta htdocs pegaremos la aplicación que queremos subir.
 ![alt text](images/SITIOS/8.1.PNG)
 
 Después modificaremos el archivo ".htaccess" y indicaremos el "DirectoryIndex" que en este caso es "indexProyectoTema4.php".
 
-![alt text](images/SITIOS/8.PNG)
+![alt text](images/SITIOS/8.png)
 
 Y por ultimo comprobamos que accediendo en el navegador a "sitio1.albertomennun.ieslossauces.es" nos llevará a nuestro nuevo sitio.
 
-![alt text](images/SITIOS/9.PNG)
+![alt text](images/SITIOS/9.png)
 
-###### **Varios sitios HTTPS**
+##### **1.1.2.7 Varios sitios HTTPS**
 A continuación vamos a hacer que podamos tener varios sitios HTTPS en nuestro servidor web.
 
 
@@ -356,7 +345,7 @@ Importante en la línea "RewriteRule" indicar la URL con HTTPS ya que es a la UR
 
 ![alt text](images/variosSitiosHTTPS/7.PNG)
 
-##### **Permisos y usuarios**
+##### **1.1.2.8 Permisos y usuarios**
 Creamos una cuenta para la publicación de contenidos en nuestra web:
   ```
   sudo adduser --home /var/www/html --ingroup www-data --shell /bin/bash operadorweb
@@ -368,7 +357,7 @@ Creamos una cuenta para la publicación de contenidos en nuestra web:
 ```
 
 #### **1.1.3 PHP8.3-fpm**
-##### **Instalación**
+##### **1.1.3.1 Instalación**
 
  ```
 
@@ -388,19 +377,19 @@ Creamos una cuenta para la publicación de contenidos en nuestra web:
   ProxyPassMatch ^/(.*\.php)$ unix:/run/php/php8.3-fpm.sock|fcgi://127.0.0.1/var/www/html
   ```
 
-##### **Verificación del servicio**
+##### **1.1.3.2 Verificación del servicio**
    ```
     sudo service php8.3-fpm status
    ```
 
-##### **Comprobación del servidor**
+##### **1.1.3.3 Comprobación del servidor**
 
 ![alt text](images/10.PNG)
 
 ![alt text](images/9.PNG)
 
 #### **1.1.4 MariaDB**
-#### **Instalación**
+#### **1.1.4.1 Instalación**
 En primero lugar actualizaremos nuestro servidor con:
 ```
     sudo apt update
@@ -448,14 +437,14 @@ Una de las preguntas ha sido si queríamos que el usuario "root" tuviera contras
 ![alt text](images/compRoot.png)
 
 
-#### **Módulos relacionados con PHP**
+#### **1.1.4.2 Módulos relacionados con PHP**
 Deberemos de instalar el módulo que integra mysql con php8.3-fpm con:
 ![alt text](images/moduloMysql.png)
 
 Comprobaremos que se ha instalado correctamente con:
 ![alt text](images/comprobarModulos.png)
 
-#### **Comprobación desde NetBeans**
+#### **1.1.4.3 Comprobación desde NetBeans**
 En primer lugar deberemos de ir al apartado de "Services" y hacer clic derecho en "Databases". Deberemos de entrar en "New Connection...":
 
 ![alt text](images/comprobarSql/1.png)
@@ -496,10 +485,14 @@ Y a continuación deberemos de seguir en el Cliente de Desarrollo.
 
 
 #### **1.1.6 DNS**
+
+Lo hemos trabajado en el entorno de explotación.
+
 #### **1.1.7 SFTP**
 
+Lo hemos trabajado con MobaXterm en el cliente de desarrollo.
 
-##### **Enjaular un usuario**
+##### **1.1.7.1 Enjaular un usuario**
 
 Vamos a enjaular el usuario "usuarioEnjaulado1" en el directorio "/var/www/usuarioEnjaulado1".
 
@@ -570,12 +563,12 @@ Y por último antes de comprobar haremos un nuevo archivo en el que listaremos l
 
 Antes de instalarlo, un requisito minimo indispensable es tener instalado PHP 8.1 o superior.
 
-### Comprobamos la versión con:
+### 2.0.1.1 Comprobamos la versión con:
 ```bash
 php -v
 ```
 
-### Después deberemos de instalar composer:
+### 2.0.1.2 Después deberemos de instalar composer:
 ```bash
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 
@@ -586,7 +579,7 @@ sudo mv composer.phar /usr/local/bin/composer
 composer --version
 ```
 
-### Instalamos phpDocumentor globalmente
+### 2.0.1.3 Instalamos phpDocumentor globalmente
 ```bash
 composer global require phpdocumentor/phpdocumentor
 ```
@@ -657,7 +650,7 @@ Requisitos recomendados (para producción)
 
     Configuración de variables de entorno y permisos adecuados
 
-###  INSTALACIÓN DE JAVA STANDARD EDITION DEVELOPMENT KIT (JDK) 
+###  2.0.2.1 INSTALACIÓN DE JAVA STANDARD EDITION DEVELOPMENT KIT (JDK) 
 
 #### 1. Iniciar sesión en Windows
 
@@ -682,7 +675,7 @@ javac 11.0.22
 #### 6. Comprobar las variables del sistema
 Deberemos de tener las variables "CLASSPATH" y "JAVA_HOME", la variable JAVA_HOME deberá contener la url donde tenemos almacenado el JDK.
 
-### INSTALACIÓN DE TOMCAT
+### 2.0.2.2 INSTALACIÓN DE TOMCAT
 
 #### 1. Descarga Apache Tomcat en https://tomcat.apache.org/
 
