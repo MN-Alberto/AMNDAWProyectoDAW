@@ -1,18 +1,13 @@
 ## 📑 Índice
 
-- [1. Creación de proyectos](#1-creación-de-proyectos)
-- [2. Configuración de Git en NetBeans](#2-configuración-de-git-en-netbeans)
-- [3. Configuración de xDebug](#3-xdebug)
-- [4. phpDocumentor](#4-phpdocumentor)
-  - [4.1 Requisitos mínimos](#41-requisitos-mínimos)
-  - [4.2 Sistema](#42-sistema)
-  - [4.4 Instalación de dependencias](#44-instalación-de-dependencias)
-  - [4.5 Configuración de variables de entorno (nivel de cuenta)](#45-configuración-de-variables-de-entorno-nivel-de-cuenta)
-  - [4.6 Uso de phpDocumentor](#46-uso-de-phpdocumentor)
-  - [4.7 Observaciones](#47-observaciones)
-- [5. Apache Tomcat](#5-apache-tomcat)
-- [6. Comprobación de servidor HTTP](#6-comprobación-de-servidor-http)
-- [7. Comprobación de servidor HTTPS](#7-comprobación-de-servidor-https)
+- [📑 Índice](#-índice)
+      - [**1. Creación de proyectos**](#1-creación-de-proyectos)
+      - [**2. Configuración de Git en NetBeans**](#2-configuración-de-git-en-netbeans)
+    - [3. **xDebug**](#3-xdebug)
+    - [4. **phpDocumentor**](#4-phpdocumentor)
+  - [5. Apache Tomcat](#5-apache-tomcat)
+  - [6. Comprobación de servidor HTTP](#6-comprobación-de-servidor-http)
+  - [7. Comprobación de servidor HTTPS](#7-comprobación-de-servidor-https)
 
 
 ##### **1. Creación de proyectos**
@@ -86,77 +81,118 @@ En nuestro IDE, deberemos de dirigirnos a "Tools/Options/PHP/Debugging", y deber
 
 #### 4. **phpDocumentor**
 
-### 4.1 Requisitos mínimos
+## Requisitos previos
 
-Para poder utilizar phpDocumentor en el entorno de desarrollo es necesario cumplir los siguientes requisitos:
+Antes de empezar, asegúrate de tener instalado:
 
-### 4.2 Sistema
+- Windows 10 u 11
+- PHP 7.4 o superior
+- Apache NetBeans 12 o superior
+- Composer
+- Acceso a la línea de comandos (CMD o PowerShell)
 
-    Sistema Operativo: Ubuntu Server 20.04 LTS o superior
-
-    Acceso: Usuario con permisos de instalación (sudo)
-
-### 4.3 Software:
-
-PHP: versión 8.1 o superior
-
-    Composer: versión 2.x
-
-Extensiones PHP requeridas:
-
-    php-cli
-    php-xml
-    php-mbstring
-    php-curl
-
-### 4.4 Instalación de dependencias
-
-Actualizar el sistema e instalar PHP con las extensiones necesarias:
+Verificar versión de PHP:
 
 ```bash
-sudo apt update
-sudo apt install -y php php-cli php-xml php-mbstring php-curl unzip git
+    php -v
 ```
 
-### 4.5 Configuración de variables de entorno (nivel de cuenta)
+Instalar Composer:
 
-Para que el comando phpDocumentor esté disponible desde cualquier ubicación, es necesario añadir Composer al PATH del usuario.
+Descarga Composer desde:
+https://getcomposer.org/Composer-Setup.exe
 
-Editar el archivo .bashrc del usuario:
+Ejecuta el instalador y asegúrate de que detecta tu instalación de PHP.
+
+Verifica la instalación:
+
 ```bash
-nano ~/.bashrc
+    composer --version
 ```
 
-Añadir la siguiente línea al final del archivo:
+Instalar PHPDocumentor:
+
 ```bash
-export PATH="$HOME/.config/composer/vendor/bin:$PATH"
+    composer global require phpdocumentor/phpdocumentor
 ```
 
-Aplicar los cambios:
+Normalmente se instalará en C:\Users\TU_USUARIO\AppData\Roaming\Composer\vendor\bin
+
+Añadir PHPDocumentor al PATH:
+
+Deberemos de dirigirnos a las variables de entorno del sistema y editar la variable PATH, la editaremos y añadiremos la ruta C:\Users\TU_USUARIO\AppData\Roaming\Composer\vendor\bin
+
+Comprobamos que PHPDocumentor funciona:
+
 ```bash
-source ~/.bashrc
+    phpdoc --version
 ```
 
-### 4.6 Uso de phpDocumentor
-Desde la raíz del proyecto PHP:
+Configuración de NetBeans:
+
+    Abrir NetBeans
+
+    Ir a File -> Open Project
+
+    Seleccionar proyecto PHP
+
+Configurar PHPDocumentor:
+
+    Tools -> Options -> PHP -> PHPDocumentor
+
+En el apartado PHPDocumento script escribiremos
+
 ```bash
-phpDocumentor -d src -t docs
+    phpdoc
 ```
 
-Donde:
+También podemos utilizar la ruta completa: C:\Users\TU_USUARIO\AppData\Roaming\Composer\vendor\bin\phpdoc.bat
 
-    src -> contiene el código fuente PHP
+Tras hacer esto, en nuestro proyecto es importante que haya comentarios PHPDoc.
 
-    docs -> será el directorio donde se generará la documentación HTML
+Para generar la documentación, podremos hacerlo desde NetBeans y desde la línea de comandos:
 
-### 4.7 Observaciones
+### NetBeans:
 
-    La instalación se realiza a nivel de cuenta, no del sistema completo.
+Clic derecho sobre el proyecto
 
-    Cada usuario del servidor deberá configurar su propio PATH.
+Seleccionar:
 
-    Se recomienda mantener PHP y Composer actualizados para evitar incompatibilidades.
+```bash
+    Generate Documentation → PHPDocumentor
+```
 
+Elegir la carpeta de destino (por ejemplo docs/)
+
+
+### Línea de Comandos:
+
+Desde la raíz del proyecto ejecutar:
+
+    src es la carpeta del código fuente
+
+    docs es la carpeta donde se generará la documentación
+
+```bash
+    phpdoc -d src -t docs
+```
+
+Abre la carpeta docs
+
+Ejecuta el archivo index.html
+
+
+### Errores comunes
+
+Error: phpdoc no se reconoce como comando
+
+    Verificar que la ruta esté correctamente añadida al PATH
+
+    Usar la ruta completa al ejecutable phpdoc.bat
+
+Error: NetBeans no genera la documentación
+
+    Revisar la ruta configurada en Tools -> Options -> PHP -> PHPDocumentor
 
 
 ### 5. Apache Tomcat

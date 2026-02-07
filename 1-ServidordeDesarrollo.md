@@ -1,49 +1,60 @@
 
 ## 📑 Índice
 
-- [CFGS Desarrollo de Aplicaciones Web](#cfgs-desarrollo-de-aplicaciones-web)
-  - [1. Entorno de Desarrollo](#1-entorno-de-desarrollo)
-    - [1.1 Ubuntu Server 24.04.3 LTS](#11-ubuntu-server-240043-lts)
-      - [1.1.1 Configuración inicial](#111-configuración-inicial)
-        - [1.1.1.1 Nombre y configuración de red](#1111-nombre-y-configuración-de-red)
-        - [1.1.1.2 Comandos de comprobación](#1112-comandos-de-comprobación)
-        - [1.1.1.3 Actualizar el sistema](#1113-actualizar-el-sistema)
-        - [1.1.1.4 Configuración fecha y hora](#1114-configuración-fecha-y-hora)
-        - [1.1.1.5 Cuentas administradoras](#1115-cuentas-administradoras)
-        - [1.1.1.6 Cuentas no administradoras](#1116-cuentas-no-administradoras)
-        - [1.1.1.7 Comprobar cuentas](#1117-comprobar-cuentas)
-        - [1.1.1.8 Habilitar cortafuegos](#1118-habilitar-cortafuegos)
-      - [1.1.2 Instalación del servidor web](#112-instalación-del-servidor-web)
-        - [1.1.2.1 Instalación](#1121-instalación)
-        - [1.1.2.2 Verificación del servicio](#1122-verificación-del-servicio)
-        - [1.1.2.3 Ficheros log](#1123-ficheros-log)
-          - [Comprobar HTTP](2-ClienteDeDesarrollo.md#6-comprobación-de-servidor-http)
-        - [1.1.2.4 HTTP a HTTPS Server](#1124-http-a-https-server)
-        - [1.1.2.5 Redirección de HTTP a HTTPS Server](#1125-redirección-de-http-a-https-server)
-          - [Comprobar HTTPS en el cliente](2-ClienteDeDesarrollo.md#7-comprobación-de-servidor-https)
-        - [1.1.2.6 Virtual Hosts](#1126-virtual-hosts)
-          - [Sitio Virtual en explotación](4-EntornoDeExplotación.md#15-sitio-virtual)
-        - [1.1.2.7 Varios sitios HTTPS](#1127-varios-sitios-https)
-        - [1.1.2.8 Permisos y usuarios](#1128-permisos-y-usuarios)
-      - [1.1.3 PHP8.3-fpm](#113-php83-fpm)
-        - [1.1.3.1 Instalación](#1131-instalación)
-        - [1.1.3.2 Verificación del servicio](#1132-verificación-del-servicio)
-        - [1.1.3.3 Comprobación del servidor](#1133-comprobación-del-servidor)
-      - [1.1.4 MariaDB](#114-mariadb)
-        - [1.1.4.1 Instalación](#1141-instalación)
-        - [1.1.4.2 Módulos relacionados con PHP](#1142-módulos-relacionados-con-php)
-        - [1.1.4.3 Comprobación desde NetBeans](#1143-comprobación-desde-netbeans)
-      - [1.1.5 XDebug](#115-xdebug)
-      - [1.1.6 DNS](#116-dns)
-      - [1.1.7 SFTP](#117-sftp)
-        - [1.1.7.1 Enjaular un usuario](#1171-enjaular-un-usuario)
-      - [1.1.8 Apache Tomcat](#118-apache-tomcat)
-      - [1.1.9 LDAP](#119-ldap)
-    - [2.0.0 PHPMyAdmin](#200-phpmyadmin)
-    - [2.0.1 PHPDocumentor](#201-phpdocumentor)
-    - [2.0.2 Apache Tomcat](#202-apache-tomcat)
-      - [2.0.2.1 Instalación de Java Standard Edition Development Kit (JDK)](#2021-instalación-de-java-standard-edition-development-kit-jdk)
-      - [2.0.2.2 Instalación de Tomcat](#2022-instalación-de-tomcat)
+- [📑 Índice](#-índice)
+- [1. Entorno de Desarrollo](#1-entorno-de-desarrollo)
+  - [1.1 Ubuntu Server 24.04.3 LTS](#11-ubuntu-server-24043-lts)
+    - [1.1.1 **Configuración inicial**](#111-configuración-inicial)
+      - [1.1.1.1 **Nombre y configuración de red**](#1111-nombre-y-configuración-de-red)
+    - [1.1.1.2 Comandos de comprobación:](#1112-comandos-de-comprobación)
+      - [1.1.1.3 **Actualizar el sistema**](#1113-actualizar-el-sistema)
+      - [1.1.1.4 **Configuración fecha y hora**](#1114-configuración-fecha-y-hora)
+      - [1.1.1.5 **Cuentas administradoras**](#1115-cuentas-administradoras)
+      - [1.1.1.6 **Cuentas no administradoras**](#1116-cuentas-no-administradoras)
+      - [1.1.1.7 **Comprobar cuentas:**](#1117-comprobar-cuentas)
+      - [1.1.1.8 **Habilitar cortafuegos**](#1118-habilitar-cortafuegos)
+    - [**1.1.2 Instalación del servidor web**](#112-instalación-del-servidor-web)
+      - [**1.1.2.1 Instalación**](#1121-instalación)
+      - [**1.1.2.2 Verficación del servicio**](#1122-verficación-del-servicio)
+      - [**1.1.2.3 Ficheros log**](#1123-ficheros-log)
+    - [Comprobar HTTP](#comprobar-http)
+    - [**1.1.2.4 HTTP a HTTPS Server**](#1124-http-a-https-server)
+    - [**1.1.2.5 Redirección de HTTP a HTTPS Server**](#1125-redirección-de-http-a-https-server)
+  - [Comprobar HTTPS en el cliente](#comprobar-https-en-el-cliente)
+      - [**1.1.2.6 Virtual Hosts**](#1126-virtual-hosts)
+  - [Ojo:](#ojo)
+  - [Sitio Virtual en explotación](#sitio-virtual-en-explotación)
+      - [**1.1.2.7 Varios sitios HTTPS**](#1127-varios-sitios-https)
+      - [**1.1.2.8 Permisos y usuarios**](#1128-permisos-y-usuarios)
+    - [**1.1.3 PHP8.3-fpm**](#113-php83-fpm)
+      - [**1.1.3.1 Instalación**](#1131-instalación)
+      - [**1.1.3.2 Verificación del servicio**](#1132-verificación-del-servicio)
+      - [**1.1.3.3 Comprobación del servidor**](#1133-comprobación-del-servidor)
+    - [**1.1.4 MariaDB**](#114-mariadb)
+    - [**1.1.4.1 Instalación**](#1141-instalación)
+    - [**1.1.4.2 Módulos relacionados con PHP**](#1142-módulos-relacionados-con-php)
+    - [**1.1.4.3 Comprobación desde NetBeans**](#1143-comprobación-desde-netbeans)
+    - [**1.1.5 XDebug**](#115-xdebug)
+    - [**1.1.6 DNS**](#116-dns)
+    - [**1.1.7 SFTP**](#117-sftp)
+      - [**1.1.7.1 Enjaular un usuario**](#1171-enjaular-un-usuario)
+    - [**1.1.8 Apache Tomcat**](#118-apache-tomcat)
+    - [**1.1.9 LDAP**](#119-ldap)
+    - [**2.0.0 PHPMyAdmin**](#200-phpmyadmin)
+    - [**2.0.1 PHPDocumentor**](#201-phpdocumentor)
+    - [**2.0.2 Apache Tomcat**](#202-apache-tomcat)
+  - [2.0.2.1 INSTALACIÓN DE JAVA STANDARD EDITION DEVELOPMENT KIT (JDK)](#2021-instalación-de-java-standard-edition-development-kit-jdk)
+    - [1. Iniciar sesión en Windows](#1-iniciar-sesión-en-windows)
+    - [2. Descargar Java SE Development Kit en https://adoptium.net/es/](#2-descargar-java-se-development-kit-en-httpsadoptiumnetes)
+    - [3. Elige la versión 64 bits de instalación, y descargue el fichero](#3-elige-la-versión-64-bits-de-instalación-y-descargue-el-fichero)
+    - [4. Instalar la versión JDK descargada.](#4-instalar-la-versión-jdk-descargada)
+    - [5. Comprobar la versión con el comando java -version y javac -version](#5-comprobar-la-versión-con-el-comando-java--version-y-javac--version)
+    - [6. Comprobar las variables del sistema](#6-comprobar-las-variables-del-sistema)
+  - [2.0.2.2 INSTALACIÓN DE TOMCAT](#2022-instalación-de-tomcat)
+    - [1. Descarga Apache Tomcat en https://tomcat.apache.org/](#1-descarga-apache-tomcat-en-httpstomcatapacheorg)
+    - [2. Descargar el Core con extensión .zip](#2-descargar-el-core-con-extensión-zip)
+    - [3. En el disco de datos, en una carpeta llamada software la descomprimiremos](#3-en-el-disco-de-datos-en-una-carpeta-llamada-software-la-descomprimiremos)
+    - [4. A continuación, iremos a Apache Netbeans y añadiremos el Servidor Tomcat. En el menú Tools→ Server. En “Servers” hacemos clic en el botón derecho “Add Server Instance”](#4-a-continuación-iremos-a-apache-netbeans-y-añadiremos-el-servidor-tomcat-en-el-menú-tools-server-en-servers-hacemos-clic-en-el-botón-derecho-add-server-instance)
 
 |  DAW/DWES Tema2 |
 |:-----------:|
@@ -561,39 +572,85 @@ Y por último antes de comprobar haremos un nuevo archivo en el que listaremos l
 
 #### **2.0.1 PHPDocumentor**
 
-Antes de instalarlo, un requisito minimo indispensable es tener instalado PHP 8.1 o superior.
+Antes de instalarlo, un requisito minimo indispensable es tener instalado PHP 8.1 o superior, tener las extensiones "php-xml" y "php-mbstring".
 
-### 2.0.1.1 Comprobamos la versión con:
+En primer lugar, deberemos de comprobar que tenemos php instalado y su versión:
+
 ```bash
-php -v
+  php -v
 ```
 
-### 2.0.1.2 Después deberemos de instalar composer:
+También deberemos de comprobar que tenemos instaladas las extensiones necesarias:
+
 ```bash
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-
-php composer-setup.php
-
-sudo mv composer.phar /usr/local/bin/composer
-
-composer --version
+  php -m | grep -E "xml|mbstring"
 ```
 
-### 2.0.1.3 Instalamos phpDocumentor globalmente
+Debemos tener las extensiones mencionadas al inicio, si no la stenemos deberemos de instalarlas.
+
+Si no están instaladas, en primer lugar deberemos de actualizar nuestro servidor:
+
 ```bash
-composer global require phpdocumentor/phpdocumentor
+  sudo apt update
+  sudo apt upgrade
 ```
 
-Añade Composer al PATH si no está ya:
+Después deberemos de instalar las extensiones:
+
 ```bash
-echo 'export PATH="$HOME/.config/composer/vendor/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
+  sudo apt install php8.3-xml
+  sudo apt install php8.3-mbstring
 ```
 
-Comprueba la instalación:
+Reiniciamos el servicio php8.3-fpm para asegurarnos de que las extensiones que hemos instalado se han cargado correctamente.
+
 ```bash
-phpDocumentor --version
+  sudo service php8.3-fpm restart
 ```
+
+Vamos a descargar PHPDocumentor mediante el metodo PHAR, para ello ejecutaremos:
+
+```bash
+  wget https://phpdoc.org/phpDocumentor.phar
+```
+
+Después pasaremos el archivo al servidor y le daremos permisos de ejecución:
+
+```bash
+  sudo chmod +x phpDocumentor.phar
+```
+
+Después moveremos el archivo al directorio "/usr/local/bin/phpdoc" y le dambiaremos el nombre a phpdoc, de este modo podremos ejecutarlo desde cualquier directorio.
+
+```bash
+  sudo mv phpDocumentor.phar /usr/local/bin/phpdoc
+```
+
+Ejecutamos PHPDocumentor con:
+
+```bash
+  phpdoc
+```
+
+Después deberemos de dirigirnos al directorio del proyecto del que vamos a generar la documentación:
+
+```bash
+  cd /var/www/html/AMNMDWESProyectoTema5/codigoPHP
+```
+
+Cambiaremos los permisos a la carpeta para que no haya problema:
+
+```bash
+  sudo chmod -R 775 /var/www/html/AMNMDWESProyectoTema5/codigoPHP
+```
+
+Después ejecutamos PHPDocumentor:
+
+```bash
+  phpdoc --directory . --target doc
+```
+
+"--directory ." busca los archivos en el directorio actual. --target docs genera el HTML con la documentación en la carpeta doc.
 
 #### **2.0.2 Apache Tomcat**
 
