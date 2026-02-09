@@ -10,6 +10,9 @@
   - [2.1 Merge](#21-merge)
   - [2.2 Rebase](#22-rebase)
   - [2.3 CherryPick](#23-cherrypick)
+- [3. Subir un proyecto y Utilizar Git](#3-subir-un-proyecto-y-utilizar-git)
+
+  # 3. **Subir un proyecto y Utilizar Git**
 
 # 1. **GitHub**
 
@@ -346,4 +349,255 @@ Al igual que con rebase, si no queremos que se haga un commit automático, podre
 
 ```bash
   git cherry-pick --no-commit c3a91f2
+```
+
+# 3. **Subir un proyecto y Utilizar Git**
+
+  ## 3.1 Crear un nuevo repositorio
+
+Para crear un nuevo repositorio necesitaremos, en la carpeta del proyecto ejecutar:
+
+  ```bash
+    git init
+  ```
+  ## 3.2 Clonar un repositorio
+
+  ```bash
+    git clone https://github.com/usuario/proyecto.git
+  ```
+
+## 3.3 Tipo de estados de los archivos
+
+```bash
+  Untracked: Git no los conoce
+
+  Modified: cambiaron pero no están preparados
+
+  Staged: listos para commit
+
+  Committed: guardados en el historial
+```
+
+## 3.4 Flujo básico
+
+  ```bash
+  git status                  # Muestra el estado de los archivos
+  git add archivo              # Añade un archivo al staging
+  git add .                    # Añade todos los cambios al staging
+  git commit -m "mensaje"      # Guarda los cambios en el historial
+  ```
+
+## 3.5 Ver historial
+
+```bash
+  git log                     # Muestra el historial completo
+  git log --oneline           # Historial resumido (1 línea por commit)
+  git log --graph --all       # Historial visual con ramas
+```
+
+## 3.6 Deshacer cambios
+
+Antes del commit:
+
+```bash
+  git restore archivo          # Revierte cambios locales de un archivo
+  git restore --staged archivo # Saca el archivo del staging
+```
+
+Después del commit:
+
+```bash
+  git revert <hash> # Crea un commit que revierte otro commit
+```
+
+"git reset" reescribe historia
+
+## 3.7 Ramas
+
+```bash
+  git branch nueva-rama        # Crea una nueva rama
+  git checkout nueva-rama     # Cambia a esa rama
+  git checkout -b nueva-rama  # Crea y cambia a la rama en un solo paso
+```
+
+Ver ramas:
+
+```bash
+  git branch                  # Muestra ramas locales
+  git branch -a               # Muestra ramas locales y remotas
+```
+
+Borrar rama:
+
+```bash
+  git branch -d rama           # Borra una rama local
+```
+
+Fusionar ramas:
+
+```bash
+  git checkout main            # Cambia a la rama principal
+  git merge feature            # Fusiona la rama feature en main
+```
+
+Si hay conflictos:
+
+Git los marca en los archivos
+
+    Resolver manualmente
+
+    git add
+
+    git commit
+
+## 3.8 Stash
+
+```bash
+  git stash                   # Guarda cambios sin hacer commit
+  git stash list              # Lista stashes guardados
+  git stash pop               # Aplica y borra el último stash
+  git stash drop              # Borra un stash sin aplicarlo
+```
+
+## 3.9 Repositorios remotos
+
+Agregar remote:
+
+```bash
+  git remote add origin https://github.com/usuario/repo.git # Vincula repo remoto
+```
+
+Subir cambios:
+
+```bash
+  git push origin main         # Sube commits al repositorio remoto
+```
+
+Bajas cambios:
+
+```bash
+  git pull                    # Trae y fusiona cambios remotos
+  git fetch                   # Trae cambios sin fusionarlos
+```
+
+## 3.10 Tags
+
+```bash
+  git tag v1.0.0               # Crea un tag simple
+  git tag -a v1.1.0 -m "release" # Crea un tag anotado
+  git push --tags              # Sube los tags al remoto
+```
+
+## 3.11 Subir a remoto
+
+Guardar cambios en la rama actual
+
+Asegúrate de estar en la rama correcta (por ejemplo feature):
+
+```bash
+  git checkout feature        # Cambia a la rama feature
+```
+Guardar cambios:
+
+
+```bash
+  git add .                   # Añade todos los cambios al staging
+  git commit -m "Add new feature"  # Crea un commit con los cambios
+```
+
+Comprobar commits pendientes:
+
+
+```bash
+  git log --oneline --all --graph   # Muestra el historial con ramas
+```
+
+Vincular el repositorio local con GitHub (solo una vez)
+
+Si aún no tienes el remoto configurado:
+
+```bash
+  git remote add origin https://github.com/usuario/repositorio.git
+```
+
+Verificar:
+
+```bash
+  git remote -v               # Muestra los remotos configurados
+```
+
+Subir la rama principal (main) a GitHub
+
+Cambiar a main:
+
+```bash
+  git checkout main           # Cambia a la rama main
+```
+
+Asegurarse de que está actualizada:
+
+```bash
+  git pull origin main        # Trae cambios remotos si existen
+```
+
+Subir a la rama:
+
+```bash
+  git push -u origin main     # Sube main y la vincula con GitHub
+```
+-u crea el seguimiento (tracking) entre local y remoto
+
+Subir la segunda rama (feature) a GitHub
+
+Cambiar a la rama secundaria:
+
+```bash
+  git checkout feature        # Cambia a la rama feature
+```
+
+Subirla por primera vez:
+
+```bash
+  git push -u origin feature  # Sube la rama feature a GitHub
+```
+Ahora ambas ramas existen en GitHub.
+
+Subir cambios futuros (flujo normal)
+
+Después del primer push, solo necesitas:
+
+```bash
+  git add .
+  git commit -m "Update feature"
+  git push                    # Sube cambios de la rama actual
+```
+Git sabe automáticamente a qué rama remota subir.
+
+Fusionar la rama feature en main (opcional)
+
+Cuando la feature esté lista:
+
+```bash
+  git checkout main           # Cambia a main
+  git pull origin main        # Asegura que esté actualizada
+  git merge feature           # Fusiona feature en main
+```
+
+Subir la fusión:
+
+```bash
+  git push                    # Sube main actualizada a GitHub
+```
+
+Borrar la rama feature (opcional)
+Borrar localmente:
+
+```bash
+  git branch -d feature       # Borra la rama feature local
+```
+
+Borrar en GitHub
+
+```bash
+  git push origin --delete feature  # Borra la rama remota
 ```
